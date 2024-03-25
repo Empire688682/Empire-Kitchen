@@ -3,7 +3,6 @@ import './Menu.css';
 import {menu_list} from '../Asset/assets'
 
 const Menu = ({category, setCategory}) => {
-  console.log(category)
   return (
     <div className='food-menu'>
       <h2>Explore our menu</h2>

@@ -16,7 +16,8 @@ const ShopProduct = () => {
       <div className="product">
       {
         food_list.map((items, i) =>{
-            return <Item key={i} name={items.name} image={items.image} price={items.price} description={items.description} />
+          console.log(items.id)
+            return <Item key={i} name={items.name} image={items.image} price={items.price} description={items.description} id={items.id}/>
         })
       }
       </div>
