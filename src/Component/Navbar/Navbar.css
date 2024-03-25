@@ -1,0 +1,59 @@
+.navbar{
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.navbar .logo{
+    color: red;
+    font-size: 35px;
+}
+.navbar .menu ul{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+.menu ul li{
+    list-style: none;
+    font-weight: bold;
+    color: rgb(122, 117, 117);
+    cursor: pointer;
+}
+.menu ul li hr{
+    border: 2px solid;
+    color: black;
+    margin-top: 5px;
+}
+.login-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.login-section img{
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.login-section img:active{
+    transform: scale(1.5);
+}
+.login-section button{
+    font-size: 20px;
+    background-color: transparent;
+    border: 1px solid rgb(122, 117, 117);
+    padding: 8px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: .3s ;
+}
+.login-section button:active{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
