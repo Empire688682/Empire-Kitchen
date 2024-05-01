@@ -1,0 +1,35 @@
+.food-menu{
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+.menu-images-con{
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+    align-items: center;
+    gap: 15px;
+}
+.menu-images-con::-webkit-scrollbar{
+    display: none;
+}
+.menu-images-con .menu-box{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+}
+.menu-box img{
+    cursor: pointer;
+    transition:  .6s;
+}
+.menu-box img:active{
+    transform: rotate(50deg);
+}
+.menu-box .active{
+    border: 5px solid green;
+    border-radius: 50%;
+}

@@ -1,0 +1,46 @@
+.item{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: start;
+    max-width: 280px;
+    margin: 20px 0;
+}
+.item img{
+    width: 100%;
+}
+.item-img{
+    position: relative;
+}
+.item-count{
+    position: absolute;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 170px;
+    margin-left: 170px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.item-count img{
+    width: 30px;
+}
+.item-name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.item-name h3{
+    font-size: 18px;
+}
+.item-name img{
+    width: 100px;
+}
+.price{
+    font-weight: bold;
+}
+.count-img{
+    cursor: pointer;
+}
