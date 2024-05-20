@@ -22,4 +22,17 @@ import fs from 'fs';
     }
 } 
 
-export {addFood};
+//All foods
+const allFoods = async (req,res)=>{
+    try {
+        const foods = await foodModel.find({});
+        res.status(200).json({ success: true, data: foods, message: "All foods fetched successfully" });
+        return foods
+    } catch (error) {
+        res.status(500).json({ success: false, message: `Error: ${error.message}` });
+        console.log(error);
+    }
+    
+}
+
+export {addFood, allFoods};

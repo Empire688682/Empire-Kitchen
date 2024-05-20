@@ -16,14 +16,15 @@ app.use(cors())
 
  //Api endpointt
  app.use("/api/food", foodRouter);
+ app.use("/images", express.static("uploads"));
 
-
+// Base endpoint
 app.get("/", (req,res)=>{
     res.send("Api working");
 })
 
 app.listen(port, () =>{
-    console.log(`Server running on http://localhost:${port}`)
+    console.log(`Server running on http://localhost:${port}`);
 })
 
 //mongodb+srv://asehindej:asehindej@cluster0.mu1i7pc.mongodb.net/Empire
