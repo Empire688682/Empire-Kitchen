@@ -17,6 +17,8 @@ app.use(cors())
  //Api endpointt
  app.use("/api/food", foodRouter);
  app.use("/images", express.static("uploads"));
+ app.use("/all", foodRouter);
+
 
 // Base endpoint
 app.get("/", (req,res)=>{
