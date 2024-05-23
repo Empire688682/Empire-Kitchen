@@ -16,6 +16,10 @@
     cursor: pointer;
     gap: 10px;
 }
+.page.active{
+    color: black;
+    background-color: rgb(245, 212, 206);
+}
 .page p{
     font-size: 15px;
 }
