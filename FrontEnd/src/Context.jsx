@@ -16,8 +16,6 @@ export const ShopProvider = ({children}) => {
     localStorage.setItem("shipingFeeToggle", JSON.stringify(shipingFeeToggle));
   },[cartIcon])
 
-  console.log(cartIcon)
-
   useEffect(()=>{
     localStorage.setItem("cartIcon", JSON.stringify(cartIcon));
   },[cartIcon])
