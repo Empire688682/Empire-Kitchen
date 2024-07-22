@@ -55,7 +55,7 @@ const removeFood = async (req,res) =>{
 
 const fetchFoods = async (req,res) =>{
     try {
-        const foods = await foodModel.findOne({});
+        const foods = await foodModel.find({});
         res.json({
             success:true,
             data:foods,

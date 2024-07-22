@@ -1,0 +1,54 @@
+.addItems{
+    margin: 30px;
+    max-width: 40%;
+    min-width: 50%;
+}
+.addForm p{
+    padding-bottom: 5px;
+}
+
+.add-img-con img{
+    border: 1px dotted;
+    max-width: 200px;
+    height: 200px;
+    padding: 10px;
+}
+.addForm input, textarea, select{
+    padding: 5px;
+    outline: none;
+    border: 1px solid gray;
+    resize: none;
+    border-radius: 3px;
+}
+.addForm .flex-col{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+.addForm small{
+   background-color: white;
+  width: 170px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  font-weight: bolder;
+  position: relative;
+}
+
+.add-category-price-con{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.add-category-price-con p{
+    font-size: 14px;
+}
+.add-button{
+    padding: 8px 35px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

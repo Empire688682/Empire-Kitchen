@@ -10,6 +10,7 @@ const port = 6886;
 app.use(express.json());
 app.use(cors());
 app.use("/api/foods", foodRoute);
+app.use("/images", express.static("upload"))
 
 //DB connection
 dbConnection();
