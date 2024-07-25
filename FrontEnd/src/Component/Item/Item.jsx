@@ -8,14 +8,24 @@ import { UseGlobalContext } from '../../Context';
 
 const Item = ({name, image, price, description, id}) => {
 
-  const {cartItems,addTocart,removeFromCart,setCartItems} = UseGlobalContext()
+  const {cartItems,addTocart,removeFromCart,token,setLoginStatus} = UseGlobalContext();
+  const handleAddCart = (id) =>{
+    if(!token){
+      setLoginStatus(true);
+      localStorage.clear("cartItems");
+    }
+    else{
+      addTocart(id);
+    }
+
+  }
 
   return (
     <div className='item' key={id}>
       <img className='item-img' src={image} />
       {
         !cartItems[id]? <div className="item-count" >
-        <img className="count-img" src={Plus_Icon} onClick={() =>addTocart(id)}/>
+        <img className="count-img" src={Plus_Icon} onClick={() =>handleAddCart(id)}/>
        </div>:
        <div className="item-count">
         <img src={Plus_Green} onClick={() =>addTocart(id)}/>

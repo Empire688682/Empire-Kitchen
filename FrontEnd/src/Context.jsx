@@ -7,7 +7,8 @@ export const ShopProvider = ({children}) => {
   const [food_list, setFood_List] = useState([]);
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || {});
   const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false);
-  const [token, setToken] = useState("")
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [loginStatus, setLoginStatus] = useState(false);
   const url = "http://localhost:6886/";
 
   const getFood = async () =>{
@@ -64,7 +65,9 @@ export const ShopProvider = ({children}) => {
   cartItems,
   setCartItems,
   token, 
-  setToken}}>
+  setToken,
+  loginStatus, 
+  setLoginStatus}}>
     {children}
   </ShopContext.Provider>
 }
