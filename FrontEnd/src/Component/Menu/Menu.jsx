@@ -11,7 +11,7 @@ const Menu = ({category, setCategory}) => {
            {
             menu_list.map((items,i)=>{
               return ( <div key={i} className="menu-box">
-              <img className={category === items.menu_name? "active":''} src={items.menu_image} onClick={()=>setCategory(prev => prev != items.menu_name? prev = items.menu_name:"All")}/>
+              <img className={category === items.menu_name? "active":''} src={items.menu_image} onClick={()=>setCategory(prev => prev !== items.menu_name? prev = items.menu_name:"All")}/>
               <h3>{items.menu_name}</h3>
           </div>)
             })

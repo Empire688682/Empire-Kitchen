@@ -6,7 +6,7 @@ import Item from '../Item/Item';
 import {menu_list} from '../Asset/assets'
 
 const ShopProduct = () => {
-    const {food_list} = UseGlobalContext()
+    const {food_list, url} = UseGlobalContext()
     const [category, setCategory] = useState("All");
 
   return (
@@ -15,9 +15,9 @@ const ShopProduct = () => {
       <h1>Top Meal Near You</h1>
       <div className="product">
       {
-        food_list.map((items, i) =>{
+        food_list.map((items) =>{
           if(category === "All" || category === items.category){
-            return <Item key={i} name={items.name} image={items.image} price={items.price} description={items.description} id={items.id}/>
+            return <Item key={items._id} name={items.name} image={url+"images/"+items.image} price={items.price} description={items.description} id={items._id}/>
           }
         })
       }

@@ -9,7 +9,6 @@ import { UseGlobalContext } from '../../Context';
 const Navbar = () => {
     const [menu, setMenu] = useState("Home")
     const [loginStatus, setLoginStatus] = useState(false);
-    const {cartIcon} = UseGlobalContext()
   return (
     <div className='navbar'>
       {
@@ -26,7 +25,7 @@ const Navbar = () => {
       </div>
       <div className="login-section">
         <img src={Search_Icon}/>
-        <NavLink to='/cart'><div className='cart-icon'><img src={Cart_Icon}/><p className={cartIcon && cartIcon? "cart-icon-p":''}></p></div></NavLink>
+        <NavLink to='/cart'><div className='cart-icon'><img src={Cart_Icon}/></div></NavLink>
         <button onClick={()=> setLoginStatus(true)} >Login</button>
       </div>
     </div>

@@ -1,33 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {food_list} from '../src/Component/Asset/assets'
+import axios from 'axios'
 
 const ShopContext = React.createContext();
 export const ShopProvider = ({children}) => {
 
+  const [food_list, setFood_List] = useState([]);
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || {});
-  const [cartIcon, setCartIcon] = useState(JSON.parse(localStorage.getItem("cartIcon")) || false)
-  const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false)
+  const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false);
+  const url = "http://localhost:6886/";
+
+  const getFood = async () =>{
+    try {
+      const response = await axios.get(url+"api/foods/food");
+      setFood_List(response.data.data)
+    } catch (error) {
+      console.log(error)
+    }
+  };
+  useEffect(()=>{
+    getFood()
+  },[]);
 
   useEffect(()=>{
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  },[cartItems])
-
-  useEffect(()=>{
-    localStorage.setItem("shipingFeeToggle", JSON.stringify(shipingFeeToggle));
-  },[cartIcon])
-
-  useEffect(()=>{
-    localStorage.setItem("cartIcon", JSON.stringify(cartIcon));
-  },[cartIcon])
+  },[cartItems]);
  
   function addTocart(itemId){
-    setCartItems((prev)=>{
-      if(!prev[itemId]){
-        return {...prev, [itemId]:1}
-      }else{
-        return {...prev, [itemId]:prev[itemId]+1}
-      }
-    })
+    setCartItems((prev) => {
+      return { ...prev, [itemId]: (prev[itemId] || 0) + 1 };
+    });
   }
 
   function removeFromCart(itemId){
@@ -38,23 +39,29 @@ export const ShopProvider = ({children}) => {
     })
   }
   
-  function getTotalValue(){
+  const getTotalValue = () => {
     let total = 0;
-    for(const item in cartItems){
-      if(cartItems[item] > 0){
-        setShipingFeeToggle(true);
-        setCartIcon(true)
-        const totalInfo = food_list.find((product)=> product.id === item);
-        total += totalInfo.price * cartItems[item];
-      }else{
-        setCartIcon(false)
-        setShipingFeeToggle(false)
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let totalInfo = food_list.find((product) => product._id === item);
+        if (totalInfo) {
+          total += totalInfo.price * cartItems[item];
+        }
       }
     }
-    return total
-  }
+    return total;
+  };
+  
 
-  return <ShopContext.Provider value={{food_list,shipingFeeToggle,cartIcon,removeFromCart,addTocart,getTotalValue,cartItems,setCartItems}}>
+  return <ShopContext.Provider value={{
+  food_list,
+  url,
+  shipingFeeToggle,
+  removeFromCart,
+  addTocart,
+  getTotalValue,
+  cartItems,
+  setCartItems}}>
     {children}
   </ShopContext.Provider>
 }
