@@ -34,16 +34,6 @@ const Cart = () => {
           }
         })
       }
-       {shipingFeeToggle && shipingFeeToggle? <div className="cart-head cart-items">
-        <p className='product'></p>
-        <p className='head-title'></p>
-        <div className='head-title quantity-con'>
-          <h5 className='plus-minus'>
-            Shiping Fee
-          </h5>
-        </div>
-        <h5 className='head-title'>free</h5>
-      </div>:null}
 
       <div className="cart-head cart-items">
         <p className='product'></p>
