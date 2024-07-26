@@ -1,11 +1,12 @@
 import React from 'react';
 import { UseGlobalContext } from '../../Context';
 import './Cart.css';
+import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
   const { food_list, shipingFeeToggle, cartItems, removeFromCart, addTocart, getTotalValue } = UseGlobalContext()
   return (
-    <div className='cart'>
+    <div className='Cart'>
       <div className="cart-head">
         <h1 className='product'>Product</h1>
         <h1 className='head-title'>Price</h1>
@@ -54,7 +55,7 @@ const Cart = () => {
         </div>
         <h3 className='head-title'>${getTotalValue()}</h3>
       </div>
-      {shipingFeeToggle && shipingFeeToggle?<div className='check-out-btn-con'><button className='check-out-btn'>Check Out</button></div>:null}
+      {shipingFeeToggle && shipingFeeToggle?<div className='check-out-btn-con'><NavLink style={{textDecoration:"none"}} to="/order" className='check-out-btn'>Check Out</NavLink></div>:null}
     </div>
   )
 }

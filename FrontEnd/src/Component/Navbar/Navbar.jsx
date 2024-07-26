@@ -14,7 +14,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const logoutUser = () =>{
-      localStorage.removeItem("token");
+      localStorage.clear();
       setToken("");
       navigate("/");
       window.location.reload();

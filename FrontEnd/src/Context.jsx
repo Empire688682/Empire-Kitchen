@@ -29,7 +29,12 @@ export const ShopProvider = ({children}) => {
  
   function addTocart(itemId){
     setCartItems((prev) => {
-      return { ...prev, [itemId]: (prev[itemId] || 0) + 1 };
+      if(!prev[itemId]){
+        return {...prev, [itemId]: 1}
+      }
+      else{
+        return {...prev, [itemId]:prev[itemId] +1}
+      }
     });
   }
 
@@ -59,6 +64,7 @@ export const ShopProvider = ({children}) => {
   food_list,
   url,
   shipingFeeToggle,
+  setShipingFeeToggle,
   removeFromCart,
   addTocart,
   getTotalValue,

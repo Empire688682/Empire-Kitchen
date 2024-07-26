@@ -8,7 +8,7 @@ import { UseGlobalContext } from '../../Context';
 
 const Item = ({name, image, price, description, id}) => {
 
-  const {cartItems,addTocart,removeFromCart,token,setLoginStatus} = UseGlobalContext();
+  const {cartItems,addTocart,removeFromCart,token,setLoginStatus,setShipingFeeToggle} = UseGlobalContext();
   const handleAddCart = (id) =>{
     if(!token){
       setLoginStatus(true);
@@ -16,6 +16,7 @@ const Item = ({name, image, price, description, id}) => {
     }
     else{
       addTocart(id);
+      setShipingFeeToggle(true)
     }
 
   }
