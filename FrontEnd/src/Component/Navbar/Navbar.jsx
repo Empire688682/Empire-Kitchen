@@ -14,7 +14,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const logoutUser = () =>{
-      localStorage.clear();
+      localStorage.removeItem("token");
       setToken("");
       navigate("/");
       window.location.reload();
@@ -45,7 +45,7 @@ const Navbar = () => {
           </ul>
           </div>
           :
-          <button onClick={()=> setLoginStatus(true)} >Login</button>
+          <button onClick={()=> setLoginStatus(true)} >Signup</button>
         }
       </div>
     </div>
