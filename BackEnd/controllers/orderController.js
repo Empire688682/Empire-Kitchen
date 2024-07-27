@@ -1,52 +1,57 @@
 import OrderModel from "../models/orderModel.js";
+import { UserModel } from "../models/userModel.js";
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_KEY);
 
+//Placing user order from frontEnd
 const PlaceOrder = async (req, res) => {
+    const {userId, items, amount, address} = req.body;
+    const frontEndUrl = "http://localhost:5173";
     try {
-        const { name, email, items, totalItems, totalAmount, shippingFee, shippingAddress } = req.body;
-        // Create a new order instance
         const newOrder = new OrderModel({
-            name,
-            email,
-            items,
-            totalItems,
-            totalAmount,
-            shippingFee,
-            shippingAddress
-        });
-        // Transform the items to match Stripe's expected format
-        const lineItems = items.map(item => ({
-            price_data: {
-                currency: 'usd',
-                product_data: {
-                    name: item.name,
-                    price: item.price,
-                    quantity: item.quantity
-                },
-                unit_amount: item.price * 100, // Stripe expects amounts in cents
-            },
-            quantity: item.quantity,
-        }));
-
-        // Create a Stripe session
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items: lineItems,
-            mode: 'payment',
-            success_url: 'https://example.com/success',
-            cancel_url: 'https://example.com/cancel',
+            userId, 
+            items, 
+            amount, 
+            address
         });
 
-        // Save the order to the database
         await newOrder.save();
 
-        // Send the session ID to the frontend
-        res.json({ success: true, sessionId: session.id });
+        const line_items = items.map((item) =>({
+            price_data:{
+                currency:"ngn",
+                prduct_data:{
+                    name:item.name
+                },
+                unit_amount:item.price *100*1500
+            }, 
+            quantity:item.quantity
+        }));
+
+        line_items.push({
+            price_data:{
+                currency:"ngn",
+                product_data:{
+                    name:"Delivery Charges"
+                },
+                unit_amount:2*100*1500
+            },
+            quantity:1
+        });
+
+        const session = await stripe.checkout.sessions.create({
+            line_items:line_items,
+            mode:"payment",
+            success_url:`${frontEndUrl}/verify?success=true&orderId=${newOrder._id}`,
+            cancel_url:`${frontEndUrl}/verify?success=false&orderId=${newOrder._id}`
+        });
+
+        res.json({succes:true, session_url:session.url});
+
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" });
+        res.json({succes:false, message:"Error"});
     }
 }
 

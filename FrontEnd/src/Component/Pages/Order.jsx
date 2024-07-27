@@ -1,23 +1,70 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import './Cart.css'
 import { UseGlobalContext } from '../../Context';
+import axios from 'axios';
 
 const Order = () => {
-    const { getTotalValue } = UseGlobalContext()
+    const { getTotalValue, token, food_list, cartItems, url } = UseGlobalContext();
+    const [data, setData] = useState({
+        FirstName: "",
+        LastName: "",
+        Email: "",
+        City: "",
+        Street: "",
+        ZipCode: "",
+        Phone: ""
+    });
+    const handleOnchange = (e) => {
+        const { name, value } = e.target;
+        setData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    //handleForm submision
+    const handleFormSubmision = (e) => {
+        e.preventDefault();
+        placeOrder();
+    };
+
+    const placeOrder = async () =>{
+        let orderItem = []
+        food_list.map((item) =>{
+            if(cartItems[item._id] > 0){
+                let itemInfo = item;
+                itemInfo["quantithy"] = cartItems[item._id];
+                orderItem.push(itemInfo)
+            }
+        });
+
+        let orderData = {
+            address:data,
+            items:orderItem,
+            amount:getTotalValue()+20
+        }
+        try {
+            let response = await axios.post(url+"api/order/place", orderData, {headers:{token}});
+            if(response.data.success){
+                const {session_url} = response.data;
+                window.location.replace(session_url);
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div className="order">
             <div className="order_con">
                 <div className="two_col">
                     <h3>Delivery Information</h3>
-                    <form>
-                        <input type="text" name="" id="" placeholder='First name' />
-                        <input type="text" name="" id="" placeholder='Last name' />
-                        <input type="email" name="" id="" placeholder='Email' />
-                        <input type="text" name="" id="" placeholder='City' />
-                        <input type="text" name="" id="" placeholder='Street' />
-                        <input type="text" name="" id="" placeholder='Zip code' />
-                        <input type="tel" name="" id="" placeholder='Phone' />
-                        
+                    <form onSubmit={handleFormSubmision}>
+                        <input onChange={handleOnchange} required value={data.FirstName} type="text" name="FirstName" id="" placeholder='First name' />
+                        <input onChange={handleOnchange} required value={data.LastName} type="text" name="LastName" id="" placeholder='Last name' />
+                        <input onChange={handleOnchange} required value={data.Email} type="email" name="Email" id="" placeholder='Email' />
+                        <input onChange={handleOnchange} required value={data.City} type="text" name="City" id="" placeholder='City' />
+                        <input onChange={handleOnchange} required value={data.Street} type="text" name="Street" id="" placeholder='Street' />
+                        <input onChange={handleOnchange} required value={data.ZipCode} type="number" name="ZipCode" id="" placeholder='Zip code' />
+                        <input onChange={handleOnchange} required value={data.Phone} type="tel" name="Phone" id="" placeholder='Phone' />
+                        <button id='submitButton' type='submit' style={{ display: 'none' }}>Submit</button>
                     </form>
                 </div>
                 <div className="two_col cart ">
@@ -25,11 +72,12 @@ const Order = () => {
                     <div>Subtotal <h4>${getTotalValue()}</h4></div>
                     <div>Delivery fees <h4>$20</h4></div>
                     <div>Total <h4>${getTotalValue() + 20}</h4></div>
-                    <button>Procced to checkout</button>
+                    <button><label htmlFor='submitButton' className='button-label'>Proceed to checkout</label></button>
                 </div>
             </div>
         </div>
     )
 }
+
 
 export default Order
