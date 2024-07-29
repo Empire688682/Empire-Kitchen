@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './Cart.css'
 import { UseGlobalContext } from '../../Context';
 import axios from 'axios';
@@ -30,7 +30,7 @@ const Order = () => {
         food_list.map((item) =>{
             if(cartItems[item._id] > 0){
                 let itemInfo = item;
-                itemInfo["quantithy"] = cartItems[item._id];
+                itemInfo["quantity"] = cartItems[item._id];
                 orderItem.push(itemInfo)
             }
         });
@@ -42,6 +42,7 @@ const Order = () => {
         }
         try {
             let response = await axios.post(url+"api/order/place", orderData, {headers:{token}});
+            
             if(response.data.success){
                 const {session_url} = response.data;
                 window.location.replace(session_url);

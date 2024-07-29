@@ -19,6 +19,7 @@ export const ShopProvider = ({children}) => {
       console.log(error)
     }
   };
+
   useEffect(()=>{
     getFood()
   },[]);
@@ -73,7 +74,8 @@ export const ShopProvider = ({children}) => {
   token, 
   setToken,
   loginStatus, 
-  setLoginStatus}}>
+  setLoginStatus,
+  }}>
     {children}
   </ShopContext.Provider>
 }

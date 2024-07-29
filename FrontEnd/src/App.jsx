@@ -7,6 +7,7 @@ import PageNotFound from './Component/Pages/PageNotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './Component/Footer/Footer';
 import Order from './Component/Pages/Order';
+import Verify from './Component/Verify/Verify';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/mobile' element={<Mobile/>}/>
         <Route path='/order' element={<Order/>}/>
+        <Route path='/verify' element={<Verify/>}/>
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>

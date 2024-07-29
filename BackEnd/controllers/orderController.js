@@ -21,7 +21,7 @@ const PlaceOrder = async (req, res) => {
         const line_items = items.map((item) =>({
             price_data:{
                 currency:"ngn",
-                prduct_data:{
+                product_data:{
                     name:item.name
                 },
                 unit_amount:item.price *100*1500
@@ -47,7 +47,7 @@ const PlaceOrder = async (req, res) => {
             cancel_url:`${frontEndUrl}/verify?success=false&orderId=${newOrder._id}`
         });
 
-        res.json({succes:true, session_url:session.url});
+        res.json({success:true, session_url:session.url});
 
     } catch (error) {
         console.log(error);

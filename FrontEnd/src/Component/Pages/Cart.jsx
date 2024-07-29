@@ -45,7 +45,7 @@ const Cart = () => {
         </div>
         <h3 className='head-title'>${getTotalValue()}</h3>
       </div>
-      {shipingFeeToggle && shipingFeeToggle?<div className='check-out-btn-con'><NavLink style={{textDecoration:"none"}} to="/order" className='check-out-btn'>Check Out</NavLink></div>:null}
+      <div className='check-out-btn-con'><NavLink style={{textDecoration:"none"}} to="/order" className='check-out-btn'>Check Out</NavLink></div>
     </div>
   )
 }
