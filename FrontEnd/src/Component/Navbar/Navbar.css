@@ -112,7 +112,7 @@
         color: white;
         font-size: 25px;
     }
-    .menu{
+    .mobile_menu{
         display: flex;
         align-items: center;
         gap: 20px;
@@ -120,14 +120,19 @@
         position: absolute;
         top: 0;
         right: 0;
-        margin-top: 90px;
+        margin-top: 95px;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.8);
-        min-height: 0;
+        max-height: ;
+        overflow: hidden;
+        transition: .6s ease-in-out;
     }
-    .menu ul{
+    .mobile_menu ul{
         display: flex;
         flex-direction: column;
         margin-right: 20px;
+    }
+    .mobile_menu ul li{
+        color: green;
     }
 }

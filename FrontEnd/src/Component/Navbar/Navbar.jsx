@@ -27,7 +27,7 @@ const Navbar = () => {
           loginStatus ? <LogSign setLoginStatus={setLoginStatus} /> : <></>
         }
         <h1 className="logo">Empire Kitchen.</h1>
-        <div className="menu">
+        <div className="menu mobile_menu">
           <ul>
             <NavLink style={{ textDecoration: "none" }} to='/'><li onClick={() => setMenu("Home")}>Home {menu === "Home" ? <hr /> : null}</li></NavLink>
             <a style={{ textDecoration: "none" }} href="#menu"> <li onClick={() => setMenu("Menu")}>Menu {menu === "Menu" ? <hr /> : null}</li></a>
