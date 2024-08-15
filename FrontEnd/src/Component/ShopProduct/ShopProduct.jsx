@@ -27,7 +27,7 @@ const ShopProduct = () => {
     <div className='shop-product'>
       <Menu category={category} setCategory={setCategory} />
       <h1>Top Meal Near You</h1>
-      <div className="all_Product">
+      <div className="all_Product" id='allItems'>
         {
           food_list.map((items) => {
             if (category === "All" || category === items.category) {

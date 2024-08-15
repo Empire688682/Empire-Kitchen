@@ -1,6 +1,15 @@
+.navbar_con{
+    width: 100%;
+    z-index: 99;
+    padding: 0 5%;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 .navbar{
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
     padding: 30px 0;
     display: flex;
     align-items: center;
@@ -9,7 +18,7 @@
     flex-wrap: wrap;
 }
 .navbar .logo{
-    color: red;
+    color: white;
     font-size: 35px;
 }
 .navbar .menu ul{
@@ -21,7 +30,7 @@
 .menu ul li{
     list-style: none;
     font-weight: bold;
-    color: rgb(122, 117, 117);
+    color: white;
     cursor: pointer;
 }
 .menu ul li hr{
@@ -96,4 +105,29 @@
 .user_con ul li:hover{
     background-color: tomato;
     
+}
+
+@media (max-width:700px){
+    .navbar .logo{
+        color: white;
+        font-size: 25px;
+    }
+    .menu{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: flex-end;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 90px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        min-height: 0;
+    }
+    .menu ul{
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+    }
 }

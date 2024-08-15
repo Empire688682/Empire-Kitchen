@@ -1,12 +1,21 @@
 import React from 'react'
 import back from '../Asset/basket_icon.png'
 import './Footer.css'
+import Contact from '../Contact/Contact'
+import { FaHeart } from "react-icons/fa";
+import { FaArrowAltCircleUp } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div id='footer'>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit animi ea necessitatibus aut repellat consequuntur accusantium neque expedita, exercitationem illum! Voluptatem perspiciatis, quam sed sequi sapiente vel amet voluptates ex?</p>
-      <img src={back}  onClick={() => window.scroll(0,20)}/>
+    
+    <div className='footer_Con'>
+     <div id="contact">
+      <Contact/>
+     </div>
+     <div className="footer">
+     <p className="designer"> &copy Copyrighted 2023 <a href="#">JAY-EMPIRE</a> <FaHeart style={{color:"red"}}/> All rights reserved </p>
+     <span onClick={()=> window.scrollTo(0,0)}>< FaArrowAltCircleUp className="toTop" title='To top' /></span>
+     </div>
     </div>
   )
 }

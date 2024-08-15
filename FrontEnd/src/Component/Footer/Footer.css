@@ -1,5 +1,44 @@
-#footer{
-    width: 90%;
-    margin: 0 auto;
+.footer{
     padding: 30px 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+.footer p{
+    font-size: 14px;
+    color: white;
+}
+
+.footer p a{
+    font-size: 14px;
+    color: ghostwhite;
+    text-decoration: none;
+    font-weight: bolder;
+    transition: 0.3s ease-in-out;
+}
+
+.footer p a:hover{
+    color: gray;
+}
+
+.footer p .fa{
+    color: red;
+}
+.footer span{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+span .toTop{
+    background-color: white;
+    font-size: 35px;
+    border-radius: 50px;
+    transition: .3s ;
+}
+.footer span:hover .toTop{
+    color: green;
 }

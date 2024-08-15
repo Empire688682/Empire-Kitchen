@@ -1,6 +1,8 @@
 .food-menu{
     width: 100%;
-    margin: 30px auto;
+    padding-top: 145px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     align-items: start;

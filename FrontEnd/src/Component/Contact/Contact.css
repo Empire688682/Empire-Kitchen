@@ -1,9 +1,20 @@
 .contact{
     width: 100%;
-    padding: 50px 5%;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
+    padding-bottom: 30px;
+    padding-top: 145px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.contact .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.row .col_2{
+    flex-basis: 45%;
+    min-width: 300px;
 }
 
 .contact h1{
@@ -154,16 +165,17 @@ form .btn:hover{
     width: 100%;
     border-radius: 5px;
     font-size: 30px;
-    color: white;
+    color: rgb(228, 213, 213);
     transition: 0.5s ease-in-out;
     margin-bottom: 20px;
     padding: 5px;
     width: 40px;
     height: 40px;
-    background-color:var(--mint-green);
+    background: #121212;
  }
  
  .icon-container .fa:hover{
-    background-color: var(--sky-blue);
+    color: #121212;
+    background-color:rgb(228, 213, 213) ;
     transform: translateY(-5px);
  }
