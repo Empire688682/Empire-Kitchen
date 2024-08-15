@@ -1,9 +1,10 @@
 .item{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     align-items: start;
     max-width: 280px;
+    min-width: 250px;
     margin: 20px 0;
 }
 .item img{
@@ -19,9 +20,10 @@
     align-items: center;
     gap: 10px;
     margin-top: 170px;
-    margin-left: 170px;
+    margin-left: 190px;
     padding: 5px;
     border-radius: 10px;
+    transform: translateY(-20px);
 }
 .item-count img{
     width: 30px;

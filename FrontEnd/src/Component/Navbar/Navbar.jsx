@@ -30,8 +30,7 @@ const Navbar = () => {
         <ul>
             <NavLink style={{textDecoration:"none"}} to='/'><li onClick={() =>setMenu("Home")}>Home {menu === "Home"? <hr />:null}</li></NavLink>
             <a style={{textDecoration:"none"}}  href="#menu"> <li onClick={() =>setMenu("Menu")}>Menu {menu === "Menu"? <hr />:null}</li></a>
-            <a href="#mobile" style={{textDecoration:"none"}} ><li onClick={() =>setMenu("Mobile")}>Mobile {menu === "Mobile"? <hr />:null}</li></a>
-            <a href="#footer" style={{textDecoration:"none"}}> <li onClick={() =>setMenu("Contact")}>Contact us {menu === "Contact"? <hr />:null}</li></a>
+            <NavLink to='/contact' style={{textDecoration:"none"}}> <li onClick={() =>setMenu("Contact")}>Contact us {menu === "Contact"? <hr />:null}</li></NavLink>
         </ul>
       </div>
       <div className="login-section">

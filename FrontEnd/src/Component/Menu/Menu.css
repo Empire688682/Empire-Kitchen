@@ -13,9 +13,6 @@
     align-items: center;
     gap: 15px;
 }
-.menu-images-con::-webkit-scrollbar{
-    display: none;
-}
 .menu-images-con .menu-box{
     display: flex;
     align-items: center;
