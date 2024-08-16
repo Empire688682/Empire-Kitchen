@@ -9,7 +9,7 @@ export const ShopProvider = ({children}) => {
   const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [loginStatus, setLoginStatus] = useState(false);
-  const url = "http://localhost:6886/";
+  const url = "https://empire-kitchen.onrender.com/";
 
   const getFood = async () =>{
     try {
