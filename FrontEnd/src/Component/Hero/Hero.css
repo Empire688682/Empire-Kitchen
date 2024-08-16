@@ -72,12 +72,13 @@
 
     .hero h1{
         font-size: 22px;
-        max-width: 80%;
+        max-width: 90%;
         margin-bottom: 30px;
         font-weight: bolder;
     }
     .hero p{
         font-size: 15px;
+        max-width: 95%;
     }
     
 }
