@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className='hero'>
       <div>
-        <h2>Experience the Symphony of Flavours, Anytime, Anywhere</h2>
+        <h1>Experience the Symphony of Flavours, Anytime, Anywhere</h1>
         <p> At EmpireKitchen, we bring a symphony of flavours straight to your door. Discover the perfect harmony of taste, quality, and convenience with every order.</p>
         <a href="#allItems"><button>SHOP NOW</button></a>
       </div>

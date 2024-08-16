@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: start;
     gap: 20px;
+    margin-bottom: 30px;
 }
 .menu-images-con{
     display: flex;
