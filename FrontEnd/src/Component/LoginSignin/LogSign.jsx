@@ -3,9 +3,11 @@ import './LoginSignin.css';
 import { RxCross2 } from "react-icons/rx";
 import axios from 'axios';
 import { UseGlobalContext } from '../../Context';
+import loading_Gif from '../Asset/loading_gif.gif'
 
 const LogSign = ({ setLoginStatus }) => {
   const { url, setToken } = UseGlobalContext();
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -22,6 +24,7 @@ const LogSign = ({ setLoginStatus }) => {
       newUrl += "api/users/add";
     }
     try {
+      setLoading(true)
       const response = await axios.post(newUrl, data);
       if (response.data.success) {
         setToken(response.data.token);
@@ -33,6 +36,9 @@ const LogSign = ({ setLoginStatus }) => {
     } catch (error) {
       console.error("There was an error!", error);
       alert("An error occurred. Please try again.");
+    }
+    finally{
+      setLoading(false)
     }
   };
 
@@ -78,7 +84,11 @@ const LogSign = ({ setLoginStatus }) => {
             placeholder='Your Password'
             required
           />
-          <button type='submit'>{loginStage === "Signup" ? "Sign Up" : 'Login'}</button>
+          {
+            loading? <button className='loading_gif'><img src={loading_Gif}  alt=""/></button>
+            :
+            <button type='submit'>{loginStage === "Signup" ? "Sign Up" : 'Login'}</button>
+          }
         </form>
         <p className='form-policy'>
           <input type='checkbox' required />

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.css'
-import Search_Icon from '../Asset/search_icon.png';
+import menu_Open from '../Asset/light_menu.png'
+import menu_Close from '../Asset/light_close_menu.png'
 import Cart_Icon from '../Asset/basket_icon.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 import LogSign from '../LoginSignin/LogSign';
@@ -9,9 +10,30 @@ import profile_Icon from '../Asset/profile_icon.png';
 
 
 const Navbar = () => {
-  const [menu, setMenu] = useState("Home")
+  const [menu, setMenu] = useState("Home");
   const { token, setToken, loginStatus, setLoginStatus } = UseGlobalContext();
   const navigate = useNavigate();
+  const [ismenu, setIsMenu] = useState(false);
+  const [background, setBackground] = useState(false);
+
+  let lastScrollY = 0;
+
+  useEffect(()=>{
+    const handleScroll = () =>{
+      if(window.scrollY > lastScrollY){
+        setBackground(true);
+      }
+      else{
+        setBackground(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  },[window.scroll])
 
   const logoutUser = () => {
     localStorage.clear();
@@ -20,35 +42,49 @@ const Navbar = () => {
     window.location.reload();
   }
 
+  const menuToTop = () => {
+    setIsMenu(false);
+    window.scrollTo(0, 0)
+  }
+
   return (
-    <div className="navbar_con">
+    <div className={`navbar_con ${background? "show":""}`}>
       <div className='navbar'>
         {
           loginStatus ? <LogSign setLoginStatus={setLoginStatus} /> : <></>
         }
-        <h1 className="logo">Empire Kitchen.</h1>
-        <div className="menu mobile_menu">
-          <ul>
-            <NavLink style={{ textDecoration: "none" }} to='/'><li onClick={() => setMenu("Home")}>Home {menu === "Home" ? <hr /> : null}</li></NavLink>
-            <a style={{ textDecoration: "none" }} href="#menu"> <li onClick={() => setMenu("Menu")}>Menu {menu === "Menu" ? <hr /> : null}</li></a>
-            <a href="#contact" style={{ textDecoration: "none" }}> <li onClick={() => setMenu("Contact")}>Contact us {menu === "Contact" ? <hr /> : null}</li></a>
-          </ul>
+        <div className="logo_con" onClick={menuToTop}>
+          <NavLink className="logo" to="/">Empire Kitchen.</NavLink>
         </div>
-        <div className="login-section">
-          <a href="#menu">
-            <img src={Search_Icon} />
-          </a>
-          <NavLink to='/cart'><div className='cart-icon'><img src={Cart_Icon} /></div></NavLink>
-          {
-            token ? <div className='user_con'><img src={profile_Icon} alt="" />
-              <ul>
-                <li>Orders</li>
-                <li onClick={logoutUser}>Logout</li>
-              </ul>
+        <div className='cart-icon-menu' onClick={menuToTop}>
+              <NavLink to='/cart'><img src={Cart_Icon} /></NavLink>
             </div>
-              :
-              <button onClick={() => setLoginStatus(true)} >Signup</button>
-          }
+        <div className="menu_icon">
+          <img onClick={() => setIsMenu(!ismenu)} src={ismenu ? menu_Close : menu_Open} alt="" />
+        </div>
+        <div className={ismenu ? 'menu_All' : "menu_All close"}>
+          <div className="menu mobile_menu">
+            <ul>
+              <NavLink onClick={menuToTop} style={{ textDecoration: "none" }} to='/'><li onClick={() => setMenu("Home")}>Home {menu === "Home" ? <hr /> : null}</li></NavLink>
+              <a style={{ textDecoration: "none" }} href="#menu"> <li onClick={() => setMenu("Menu")}>Menu {menu === "Menu" ? <hr /> : null}</li></a>
+              <a href="#contact" style={{ textDecoration: "none" }}> <li onClick={() => setMenu("Contact")}>Contact us {menu === "Contact" ? <hr /> : null}</li></a>
+            </ul>
+          </div>
+          <div className="login-section">
+            <div className='cart-icon' onClick={menuToTop}>
+              <NavLink to='/cart'><img src={Cart_Icon} /></NavLink>
+            </div>
+            {
+              token ? <div className='user_con'><img src={profile_Icon} alt="" />
+                <ul>
+                  <li onClick={() => setIsMenu(false)}>Orders</li>
+                  <li onClick={() => setIsMenu(false)} ><p onClick={logoutUser}>Logout</p></li>
+                </ul>
+              </div>
+                :
+                <button onClick={() => setLoginStatus(true)} >Signup</button>
+            }
+          </div>
         </div>
       </div>
     </div>

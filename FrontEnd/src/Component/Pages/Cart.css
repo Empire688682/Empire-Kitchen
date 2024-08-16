@@ -5,6 +5,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding-top: 100px;
 }
 .cart-head{
     width: 100%;
@@ -73,6 +74,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
+    padding-top: 40px;
 }
 .order .order_con{
     display: flex;

@@ -3,10 +3,13 @@
     z-index: 99;
     padding: 0 5%;
     z-index: 99;
-    background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
     top: 0;
     left: 0;
+    transition: .6s ease-in-out;
+}
+.navbar_con.show{
+    background-color: rgba(0, 0, 0, 0.8);
 }
 .navbar{
     width: 100%;
@@ -21,11 +24,21 @@
     color: white;
     font-size: 35px;
 }
+.menu_icon{
+    display: none;
+}
+.menu_All{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
 .navbar .menu ul{
     display: flex;
     align-items: center;
     gap: 20px;
     justify-content: center;
+    margin-right: 50px;
 }
 .menu ul li{
     list-style: none;
@@ -41,14 +54,15 @@
 .cart-icon{
     position: relative;
 }
-.cart-icon .cart-icon-p{
-    position: absolute;
-    background-color: red;
-    height: 15px;
-    width: 15px;
-    top: 0;
-    border-radius: 50px;
-    right: 0;
+.cart-icon img{
+    background-color: white;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 35px;
+}
+.cart-icon-menu{
+    display: none;
 }
 .login-section{
     display: flex;
@@ -81,6 +95,13 @@
 .user_con{
     position: relative;
 }
+.user_con img{
+    background-color: white;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+}
 .user_con:hover ul{
     display: flex;
 }
@@ -112,27 +133,72 @@
         color: white;
         font-size: 25px;
     }
+    .menu_icon{
+        display: block;
+    }
+    .menu_icon img{
+        width: 40px;
+        cursor:pointer;
+        transition: 3s ease-in-out;
+    }
+    .menu_All{
+        display: flex;
+        gap: 40px;
+        align-items: flex-end;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 104px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        max-height:400px ;
+        overflow: hidden;
+        transition: .3s ease-in-out;
+        padding-right: 40px;
+    }
+    .menu_All.close{
+        max-height:0 ;
+    }
+    .navbar .menu ul{
+        display: flex;
+        align-items: self-start;
+        gap: 30px;
+        padding: 30px;
+    }
     .mobile_menu{
         display: flex;
         align-items: center;
         gap: 20px;
         justify-content: flex-end;
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-top: 95px;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        max-height: ;
-        overflow: hidden;
-        transition: .6s ease-in-out;
     }
     .mobile_menu ul{
         display: flex;
         flex-direction: column;
-        margin-right: 20px;
+        margin-right: 0px;
     }
     .mobile_menu ul li{
         color: green;
+    }
+    .cart-icon{
+        display: none;
+    }
+    .cart-icon-menu{
+        display: block;
+        position: absolute;
+        right: 100px;
+        top: 30px;
+        background-color: white;
+        padding: 5px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .login-section{
+        display: flex;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+    .cart-icon-menu img{
+        width: 20px;
     }
 }

@@ -14,7 +14,7 @@ export const ShopProvider = ({children}) => {
   const getFood = async () =>{
     try {
       const response = await axios.get(url+"api/foods/food");
-      setFood_List(response.data.data)
+      setFood_List(response.data.data || [])
     } catch (error) {
       console.log(error)
     }

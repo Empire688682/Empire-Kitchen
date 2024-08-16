@@ -51,6 +51,14 @@ form button{
     font-weight: bolder;
     cursor: pointer;
 }
+.loading_gif{
+    padding: 0;
+    background-color: red;
+    cursor: pointer;
+}
+.loading_gif img{
+    width: 35px;
+}
 .form-policy input{
     width: 20px;
     height: 20px;
