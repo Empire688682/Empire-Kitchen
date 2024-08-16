@@ -1,6 +1,7 @@
 import express from 'express';
-import { PlaceOrder } from '../controllers/orderController.js';
+import { PlaceOrder,fetchUserOrder  } from '../controllers/orderController.js';
 
 export const orderRouter = express.Router();
 
 orderRouter.post("/place", PlaceOrder);
+orderRouter.get("/orderId", fetchUserOrder);

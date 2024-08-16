@@ -57,14 +57,21 @@ const PlaceOrder = async (req, res) => {
 };
 
 const fetchUserOrder = async (req, res) =>{
+    const {OrderId} = req.body;
     try {
-        const order = await OrderModel.findOne({orderId:_id});
+        const order = await OrderModel.findById({_id:OrderId});
+
+        if(!order){
+            return res.json({succes:true, message:"No Order found"});
+        }
+
+        return res.json({success:true, order, message:"Oreder founded"});
 
     } catch (error) {
         console.log("ERROR:", error);
-        res.json({succes:false, message:"ERROR"});
+       return res.json({succes:false, message:"ERROR"});
     }
 }
 
-export { PlaceOrder }
+export { PlaceOrder, fetchUserOrder }
 
