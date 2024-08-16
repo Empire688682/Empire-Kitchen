@@ -1,5 +1,4 @@
 import React from 'react'
-import back from '../Asset/basket_icon.png'
 import './Footer.css'
 import Contact from '../Contact/Contact'
 import { FaHeart } from "react-icons/fa";
