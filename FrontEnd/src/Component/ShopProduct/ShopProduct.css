@@ -1,9 +1,20 @@
 .shop-product{
     width: 90%;
-    margin: 30px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+.shop-product .title{
+    font-size: 25px;
+    padding-top: 30px;
+    background-color: transparent;
+    padding-left: 0;
 }
 .shop-product h1{
     font-size: 25px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
 }
 .all_Product{
     width: 100%;
@@ -72,7 +83,7 @@
 }
 .count-img{
     cursor: pointer;
-}
+};
 
 @media (max-width:700px){
     .item{
