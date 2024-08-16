@@ -9,7 +9,8 @@ export const ShopProvider = ({children}) => {
   const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [loginStatus, setLoginStatus] = useState(false);
-  const url = "https://empire-kitchen.onrender.com/";
+  //const url = "https://empire-kitchen.onrender.com/";
+  const url = "http://localhost:6886/";
 
   const getFood = async () =>{
     try {
@@ -59,6 +60,8 @@ export const ShopProvider = ({children}) => {
     }
     return total;
   };
+
+  const [OrderId, setOrderId] = useState([]);
   
 
   return <ShopContext.Provider value={{
@@ -75,6 +78,8 @@ export const ShopProvider = ({children}) => {
   setToken,
   loginStatus, 
   setLoginStatus,
+  OrderId,
+  setOrderId
   }}>
     {children}
   </ShopContext.Provider>

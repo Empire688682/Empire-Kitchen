@@ -113,32 +113,21 @@
     flex-direction: column;
     gap: 10px;
     padding: 10px 5px;
-    left: -20px;
+    left: -50px;
     display: none;
     border-radius: 3px;
     z-index: 99;
     border: 1px solid white;
+    min-width: 90px;
 }
-.user_con ul li{
+.user_con ul .li{
     list-style: none;
     cursor: pointer;
     padding: 5px;
     transition: .3s ease-in-out;
     color: white;
 }
-.user_con ul li p{
-    list-style: none;
-    cursor: pointer;
-    padding: 5px;
-    transition: .3s ease-in-out;
-    color: white;
-}
-.user_con ul li:hover{
-    background-color: white;
-    color: black;
-    border-radius: 3px;
-}
-.user_con ul li p:hover{
+.user_con ul .li:hover, .user_con ul .li p:hover{
     background-color: white;
     color: black;
     border-radius: 3px;
@@ -167,7 +156,7 @@
         margin-top: 104px;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.8);
-        max-height:400px ;
+        max-height:450px ;
         overflow: hidden;
         transition: .3s ease-in-out;
         padding-right: 40px;
@@ -179,7 +168,7 @@
         display: flex;
         align-items: self-start;
         gap: 30px;
-        padding: 30px;
+        padding: 50px 30px;
     }
     .mobile_menu{
         display: flex;

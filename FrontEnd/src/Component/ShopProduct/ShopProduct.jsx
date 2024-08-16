@@ -15,7 +15,7 @@ const ShopProduct = () => {
   const handleAddCart = (id) => {
     if (!token) {
       setLoginStatus(true);
-      localStorage.clear("cartItems");
+      localStorage.removeItem("cartItems");
     }
     else {
       addTocart(id);

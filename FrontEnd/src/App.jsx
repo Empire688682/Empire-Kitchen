@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './Component/Footer/Footer';
 import Order from './Component/Pages/Order';
 import Verify from './Component/Verify/Verify';
+import MyOrder from './Component/MyOder/MyOrder';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/order' element={<Order/>}/>
         <Route path='/verify' element={<Verify/>}/>
+        <Route path='/orders' element={<MyOrder/>}/>
         <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>

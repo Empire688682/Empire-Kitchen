@@ -11,7 +11,7 @@ import profile_Icon from '../Asset/profile_icon.png';
 
 const Navbar = () => {
   const [menu, setMenu] = useState("Home");
-  const { token, setToken, loginStatus, setLoginStatus } = UseGlobalContext();
+  const { token, setToken, loginStatus, setLoginStatus} = UseGlobalContext();
   const navigate = useNavigate();
   const [ismenu, setIsMenu] = useState(false);
   const [background, setBackground] = useState(false);
@@ -35,9 +35,11 @@ const Navbar = () => {
   },[])
 
   const logoutUser = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
+    localStorage.removeItem("cartItems");
     setToken("");
     navigate("/");
+    localStorage.removeItem("user")
     window.location.reload();
   }
 
@@ -51,6 +53,17 @@ const Navbar = () => {
     window.scrollTo(0, 20)
   }
 
+  const handleAddCart = () => {
+    if (!token) {
+      setLoginStatus(true);
+      navigate("/")
+    }
+    else {
+      setLoginStatus(false);
+    }
+
+  }
+
   return (
     <div className={`navbar_con ${background? "show":""}`}>
       <div className='navbar'>
@@ -61,7 +74,7 @@ const Navbar = () => {
           <NavLink className="logo" to="/">Empire Kitchen.</NavLink>
         </div>
         <div className='cart-icon-mobile' onClick={menuToTop2}>
-              <NavLink to='/cart'><img src={Cart_Icon} /></NavLink>
+              <img onClick={handleAddCart} src={Cart_Icon} />
             </div>
         <div className="menu_icon">
           <img onClick={() => setIsMenu(!ismenu)} src={ismenu ? menu_Close : menu_Open} alt="" />
@@ -76,13 +89,13 @@ const Navbar = () => {
           </div>
           <div className="login-section">
             <div className='cart-icon' onClick={menuToTop}>
-              <NavLink to='/cart'><img src={Cart_Icon} /></NavLink>
+              <img src={Cart_Icon} />
             </div>
             {
               token ? <div className='user_con'><img src={profile_Icon} alt="" />
                 <ul>
-                  <li onClick={() => setIsMenu(false)}>Orders</li>
-                  <li onClick={() => setIsMenu(false)} ><p onClick={logoutUser}>Logout</p></li>
+                  <NavLink to="/orders" className='li' onClick={() => setIsMenu(false)}>My Order</NavLink>
+                  <li className='li' onClick={() => setIsMenu(false)} ><p onClick={logoutUser}>Logout</p></li>
                 </ul>
               </div>
                 :
