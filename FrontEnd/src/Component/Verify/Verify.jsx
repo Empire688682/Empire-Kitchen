@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Verify.css'
 import { UseGlobalContext } from '../../Context';
 import { useLocation } from 'react-router-dom';
@@ -7,9 +7,19 @@ const Verify = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const orderId =  queryParams.get('orderId');
-    const success =  queryParams.get('success')
+    const wentThrough = queryParams.get("success");
+    const {getTotalValue} = UseGlobalContext();
+
+    const [success, setSuccess] = useState(false);
     console.log(success)
-    const {getTotalValue} = UseGlobalContext()
+    useEffect(()=>{
+      setSuccess(wentThrough);
+      if(success === true){
+        localStorage.removeItem("cartItems");
+        console.log("SUCCESS:", success)
+      }
+    },[])
+
   return (
     <div className="success-container">
     <div className="success-message">

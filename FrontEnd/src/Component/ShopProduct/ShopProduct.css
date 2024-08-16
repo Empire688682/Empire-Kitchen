@@ -41,14 +41,16 @@
 .item-count{
     position: absolute;
     background-color: white;
+    border: 2px solid black;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 170px;
+    margin-top: 160px;
     margin-left: 140px;
     padding: 5px;
     border-radius: 10px;
     transform: translateY(-20px);
+    box-shadow: 0 0 30px black;
 }
 .item-count img{
     width: 30px;
@@ -80,5 +82,12 @@
         align-items: start;
         min-width: 350px;
         flex-basis: 20%;
+    }
+    .item-count{
+        margin-top: 230px;
+        margin-left: 230px;
+        padding: 5px;
+        border-radius: 10px;
+        transform: translateY(-20px);
     }
 }
