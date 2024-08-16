@@ -9,12 +9,12 @@ export const ShopProvider = ({children}) => {
   const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [loginStatus, setLoginStatus] = useState(false);
-  const url = "https://empire-kitchen-1.onrender.com/";
+  const url = "https://empire-kitchen-1.onrender.com";
   
 
   const getFood = async () =>{
     try {
-      const response = await axios.get(url+"api/foods/food");
+      const response = await axios.get(url+"/api/foods/food");
       console.log(response.data.data)
       setFood_List(response.data.data || [])
     } catch (error) {
