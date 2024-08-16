@@ -64,3 +64,20 @@
     }
     
 }
+@media (max-width:400px){
+    .hero{
+        width: 100%;
+        height: 250vw;
+    }
+
+    .hero h1{
+        font-size: 22px;
+        max-width: 80%;
+        margin-bottom: 30px;
+        font-weight: bolder;
+    }
+    .hero p{
+        font-size: 15px;
+    }
+    
+}

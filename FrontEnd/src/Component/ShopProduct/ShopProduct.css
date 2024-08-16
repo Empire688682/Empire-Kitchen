@@ -91,3 +91,20 @@
         transform: translateY(-20px);
     }
 }
+@media (max-width:400px){
+    .item{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: start;
+        min-width: 200px;
+        flex-basis: 20%;
+    }
+    .item-count{
+        margin-top: 230px;
+        margin-left: 230px;
+        padding: 5px;
+        border-radius: 10px;
+        transform: translateY(-20px);
+    }
+}
