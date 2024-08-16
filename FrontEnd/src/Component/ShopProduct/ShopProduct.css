@@ -24,12 +24,19 @@
     border-radius: 5px;
     padding: 5px;
 }
+.item_img_con{
+    overflow: hidden;
+}
 .item img{
     width: 100%;
     border-radius:5px 5px 0 0;
 }
+.item:hover .item-img{
+    transform: scale(1.2);
+}
 .item-img{
     position: relative;
+    transition: .7s ease-in-out;
 }
 .item-count{
     position: absolute;

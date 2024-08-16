@@ -34,11 +34,11 @@
     cursor: pointer;
 }
 span .toTop{
-    background-color: white;
+    background-color: black;
     font-size: 35px;
     border-radius: 50px;
     transition: .3s ;
 }
 .footer span:hover .toTop{
-    color: green;
+    color: white;
 }

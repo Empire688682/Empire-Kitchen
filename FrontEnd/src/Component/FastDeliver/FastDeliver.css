@@ -1,0 +1,41 @@
+.fast_deliver{
+    margin: 60px 0 0 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
+
+.fast_deliver .three_col{
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 0 5px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+.three_col img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: transform 0.6s ease; 
+}
+.three_col img:hover{
+    transform: scaleX(1.1);
+}
+.three_col h3{
+    font-size: 30px;
+}
+
+@media (max-width:700px){
+    .fast_deliver .three_col{
+        flex-basis: 100%;
+        min-width: 300px;
+        margin-bottom: 30px;
+    }
+}

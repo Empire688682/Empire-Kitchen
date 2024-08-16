@@ -86,7 +86,7 @@ const Navbar = () => {
                 </ul>
               </div>
                 :
-                <button onClick={() => setLoginStatus(true)} >Signup</button>
+                <button className='signup_button' onClick={() => setLoginStatus(true)} >Signup</button>
             }
           </div>
         </div>

@@ -48,7 +48,7 @@
 }
 .menu ul li hr{
     border: 2px solid;
-    color: black;
+    color: white;
     margin-top: 5px;
 }
 .cart-icon{
@@ -86,11 +86,12 @@
     cursor: pointer;
     font-weight: 500;
     transition: .3s ;
+    background-color: white;
 }
-.login-section button:active{
-    background-color: red;
+.login-section button:hover{
+    background-color: black;
     color: white;
-    border: 1px solid red;
+    border: 1px solid wheat;
 }
 .user_con{
     position: relative;
@@ -107,7 +108,7 @@
 }
 .user_con ul{
     position: absolute;
-    background-color: lightgrey;
+    background-color: black;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -116,16 +117,31 @@
     display: none;
     border-radius: 3px;
     z-index: 99;
+    border: 1px solid white;
 }
 .user_con ul li{
     list-style: none;
     cursor: pointer;
     padding: 5px;
     transition: .3s ease-in-out;
+    color: white;
+}
+.user_con ul li p{
+    list-style: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: .3s ease-in-out;
+    color: white;
 }
 .user_con ul li:hover{
-    background-color: tomato;
-    
+    background-color: white;
+    color: black;
+    border-radius: 3px;
+}
+.user_con ul li p:hover{
+    background-color: white;
+    color: black;
+    border-radius: 3px;
 }
 
 @media (max-width:700px){
@@ -177,7 +193,7 @@
         margin-right: 0px;
     }
     .mobile_menu ul li{
-        color: green;
+        color: white;
     }
     .cart-icon{
         display: none;

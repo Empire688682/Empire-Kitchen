@@ -5,18 +5,19 @@ import Menu from '../Menu/Menu'
 import star_Icon from '../Asset/rating_starts.png';
 import Plus_Icon from '../Asset/add_icon_white.png'
 import Plus_Green from '../Asset/add_icon_green.png'
-import Remove_Green from  '../Asset/remove_icon_red.png'
+import Remove_Green from '../Asset/remove_icon_red.png'
+import FastDeliver from '../FastDeliver/FastDeliver';
 
 const ShopProduct = () => {
   const { food_list, cartItems, url, addTocart, removeFromCart, token, setLoginStatus, setShipingFeeToggle } = UseGlobalContext()
   const [category, setCategory] = useState("All");
 
-  const handleAddCart = (id) =>{
-    if(!token){
+  const handleAddCart = (id) => {
+    if (!token) {
       setLoginStatus(true);
       localStorage.clear("cartItems");
     }
-    else{
+    else {
       addTocart(id);
       setShipingFeeToggle(true)
     }
@@ -33,20 +34,22 @@ const ShopProduct = () => {
             if (category === "All" || category === items.category) {
               return (
                 <div className='item' key={items._id}>
-                  <img className='item-img' src={`${url}images/${items.image}`} />
+                  <div className="item_img_con">
+                    <img className='item-img' src={`${url}images/${items.image}`} />
+                  </div>
                   {
-                    !cartItems[items._id]? <div className="item-count" >
-                    <img className="count-img" src={Plus_Icon} onClick={() =>handleAddCart(items._id)}/>
-                   </div>:
-                   <div className="item-count">
-                    <img src={Plus_Green} onClick={() =>addTocart(items._id)}/>
-                    <p style={{color:"black"}}>{cartItems[items._id]}</p>
-                    <img src={Remove_Green} onClick={() =>removeFromCart(items._id)}/>
-                   </div>
+                    !cartItems[items._id] ? <div className="item-count" >
+                      <img className="count-img" src={Plus_Icon} onClick={() => handleAddCart(items._id)} />
+                    </div> :
+                      <div className="item-count">
+                        <img src={Plus_Green} onClick={() => addTocart(items._id)} />
+                        <p style={{ color: "black" }}>{cartItems[items._id]}</p>
+                        <img src={Remove_Green} onClick={() => removeFromCart(items._id)} />
+                      </div>
                   }
                   <div className="item-name">
                     <h3>{items.name}</h3>
-                    <img src={star_Icon}/>
+                    <img src={star_Icon} />
                   </div>
                   <p className="description">{items.description}</p>
                   <p className='price'>${items.price}</p>
@@ -56,6 +59,7 @@ const ShopProduct = () => {
           })
         }
       </div>
+      <FastDeliver />
     </div>
   )
 }
