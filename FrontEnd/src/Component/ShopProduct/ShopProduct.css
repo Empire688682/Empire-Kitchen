@@ -99,10 +99,11 @@
         align-items: start;
         min-width: 300px;
         flex-basis: 20%;
+        padding: 10px;
     }
     .item-count{
-        margin-top: 100px;
-        margin-left: 200px;
+        margin-top: 170px;
+        margin-left: 180px;
         padding: 5px;
         border-radius: 10px;
         transform: translateY(-20px);
