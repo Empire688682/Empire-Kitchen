@@ -60,6 +60,7 @@ const Navbar = () => {
     }
     else {
       setLoginStatus(false);
+      navigate("/cart")
     }
 
   }
@@ -94,7 +95,7 @@ const Navbar = () => {
             {
               token ? <div className='user_con'><img src={profile_Icon} alt="" />
                 <ul>
-                  <NavLink to="/orders" className='li' onClick={() => setIsMenu(false)}>My Order</NavLink>
+                  <NavLink to="/profile" className='li' onClick={() => setIsMenu(false)} style={{textDecoration:"none"}}>Profile</NavLink>
                   <li className='li' onClick={() => setIsMenu(false)} ><p onClick={logoutUser}>Logout</p></li>
                 </ul>
               </div>

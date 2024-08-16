@@ -1,0 +1,53 @@
+.profile{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 105px;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-bottom: 150px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: white;
+    display:flex ;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.small_col{
+    flex-basis: 30%;
+    min-width: 200px;
+    box-shadow: 0 0 10px black;
+    padding: 20px;
+    border-radius: 5px;
+}
+.big_col{
+    flex-basis: 60%;
+    min-width: 200px;
+    box-shadow: 0 0 5px black;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: green;
+}
+.big_col form{
+    width: 100%;
+}
+.big_col form input{
+    min-width: 250px;
+    max-width: 300px;
+}
+ 
+
+@media (max-width:640px){
+    .small_col{
+        flex-basis: 100%;
+        min-width: 300px;
+        box-shadow: 0 0 10px black;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    .big_col{
+        flex-basis: 100%;
+        min-width: 300px;
+    }
+    
+    
+}
