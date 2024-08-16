@@ -18,7 +18,7 @@
 }
 
 .contact h1{
-    color: #121212;
+    color: rgb(231, 231, 240);
     margin-bottom: 30px;
     font-size: 50px;
 }
@@ -34,17 +34,17 @@ form .label-container{
 }
 
 form .label-container label, .label-container-two label{
-    color: #121212;
+    color: rgb(231, 231, 240);
 }
 
 form .label-container input, form .label-container textarea, .label-container-two input{
     padding:5px;
     font-size: 16px;
     border: none;
-    color: #121212;
+    color: rgb(231, 231, 240);
     background-color: transparent;
     outline: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(231, 231, 240);
     margin: 10px 0;
 }
 
@@ -62,7 +62,7 @@ form .label-container select{
 
 form .label-container textarea{
     resize: none;
-    color: #121212;
+    color: rgb(231, 231, 240);
 }
 
 form .btn{
@@ -109,16 +109,16 @@ form .btn:hover{
 .contact-info h3{
     font-weight: 600;
     font-size: 23px;
-    color: #121212;
+    color: rgb(231, 231, 240);
 }
 
 .contact-info p{
-    color: #121212;
+    color: rgb(231, 231, 240);
     margin: 20px 0;
 }
 
 .contact-info a{
-    color: #121212;
+    color: rgb(231, 231, 240);
     text-decoration: none;
     padding: 15px 0;
     transition: all .3s ease-in-out;
@@ -175,7 +175,7 @@ form .btn:hover{
  }
  
  .icon-container .fa:hover{
-    color: #121212;
+    color: rgb(231, 231, 240);
     background-color:rgb(228, 213, 213) ;
     transform: translateY(-5px);
  }

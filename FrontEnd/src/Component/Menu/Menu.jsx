@@ -6,7 +6,8 @@ const Menu = ({category, setCategory}) => {
   return (
     <div className='food-menu' id='menu'>
       <h2>Explore our menu</h2>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur molestias doloremque repellat cumque sed nam quas excepturi rem alias? Dolorum velit ipsa vitae maiores laboriosam ea earum impedit dolore praesentium?</p>
+      <p>Discover a diverse selection of dishes crafted to delight your taste buds. From savory classics to innovative creations, our menu offers something for everyone.
+        <br /> Explore our options and find your new favorite meal today! </p>
       <div className="menu-images-con">
            {
             menu_list.map((items,i)=>{

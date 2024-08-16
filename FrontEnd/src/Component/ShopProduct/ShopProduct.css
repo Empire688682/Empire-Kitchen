@@ -20,9 +20,13 @@
     align-items: start;
     min-width: 250px;
     flex-basis: 20%;
+    box-shadow:  0 0 10px black;
+    border-radius: 5px;
+    padding: 5px;
 }
 .item img{
     width: 100%;
+    border-radius:5px 5px 0 0;
 }
 .item-img{
     position: relative;
@@ -34,7 +38,7 @@
     align-items: center;
     gap: 10px;
     margin-top: 170px;
-    margin-left: 150px;
+    margin-left: 140px;
     padding: 5px;
     border-radius: 10px;
     transform: translateY(-20px);
@@ -59,4 +63,15 @@
 }
 .count-img{
     cursor: pointer;
+}
+
+@media (max-width:700px){
+    .item{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: start;
+        min-width: 300px;
+        flex-basis: 20%;
+    }
 }

@@ -61,7 +61,7 @@
     cursor: pointer;
     width: 35px;
 }
-.cart-icon-menu{
+.cart-icon-mobile{
     display: none;
 }
 .login-section{
@@ -182,7 +182,7 @@
     .cart-icon{
         display: none;
     }
-    .cart-icon-menu{
+    .cart-icon-mobile{
         display: block;
         position: absolute;
         right: 100px;
@@ -198,7 +198,7 @@
         right: 30px;
         top: 30px;
     }
-    .cart-icon-menu img{
+    .cart-icon-mobile img{
         width: 20px;
     }
 }

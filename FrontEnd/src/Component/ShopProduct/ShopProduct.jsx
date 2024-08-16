@@ -40,7 +40,7 @@ const ShopProduct = () => {
                    </div>:
                    <div className="item-count">
                     <img src={Plus_Green} onClick={() =>addTocart(items._id)}/>
-                    <p>{cartItems[items._id]}</p>
+                    <p style={{color:"black"}}>{cartItems[items._id]}</p>
                     <img src={Remove_Green} onClick={() =>removeFromCart(items._id)}/>
                    </div>
                   }

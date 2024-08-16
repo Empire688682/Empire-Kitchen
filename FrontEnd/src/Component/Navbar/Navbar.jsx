@@ -16,9 +16,8 @@ const Navbar = () => {
   const [ismenu, setIsMenu] = useState(false);
   const [background, setBackground] = useState(false);
 
-  let lastScrollY = 0;
-
   useEffect(()=>{
+    let lastScrollY = 0;
     const handleScroll = () =>{
       if(window.scrollY > lastScrollY){
         setBackground(true);
@@ -33,7 +32,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     }
-  },[window.scroll])
+  },[])
 
   const logoutUser = () => {
     localStorage.clear();
@@ -45,6 +44,11 @@ const Navbar = () => {
   const menuToTop = () => {
     setIsMenu(false);
     window.scrollTo(0, 0)
+  } 
+
+  const menuToTop2 = () => {
+    setIsMenu(false);
+    window.scrollTo(0, 20)
   }
 
   return (
@@ -56,7 +60,7 @@ const Navbar = () => {
         <div className="logo_con" onClick={menuToTop}>
           <NavLink className="logo" to="/">Empire Kitchen.</NavLink>
         </div>
-        <div className='cart-icon-menu' onClick={menuToTop}>
+        <div className='cart-icon-mobile' onClick={menuToTop2}>
               <NavLink to='/cart'><img src={Cart_Icon} /></NavLink>
             </div>
         <div className="menu_icon">
@@ -66,8 +70,8 @@ const Navbar = () => {
           <div className="menu mobile_menu">
             <ul>
               <NavLink onClick={menuToTop} style={{ textDecoration: "none" }} to='/'><li onClick={() => setMenu("Home")}>Home {menu === "Home" ? <hr /> : null}</li></NavLink>
-              <a style={{ textDecoration: "none" }} href="#menu"> <li onClick={() => setMenu("Menu")}>Menu {menu === "Menu" ? <hr /> : null}</li></a>
-              <a href="#contact" style={{ textDecoration: "none" }}> <li onClick={() => setMenu("Contact")}>Contact us {menu === "Contact" ? <hr /> : null}</li></a>
+              <a onClick={menuToTop} style={{ textDecoration: "none" }} href="#menu"> <li onClick={() => setMenu("Menu")}>Menu {menu === "Menu" ? <hr /> : null}</li></a>
+              <a onClick={menuToTop} href="#contact" style={{ textDecoration: "none" }}> <li onClick={() => setMenu("Contact")}>Contact us {menu === "Contact" ? <hr /> : null}</li></a>
             </ul>
           </div>
           <div className="login-section">

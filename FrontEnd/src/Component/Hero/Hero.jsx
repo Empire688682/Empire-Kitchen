@@ -5,9 +5,8 @@ const Hero = () => {
   return (
     <div className='hero'>
       <div>
-        <h2>A Symphony of Flavours
-        </h2>
-        <p> Est ipsam non magnam illo, aliquid pariatur similique tenetur aspernatur. Eos dolorum quia quas asperiores adipisci rerum totam veniam animi, odit obcaecati.</p>
+        <h2>Experience the Symphony of Flavours, Anytime, Anywhere</h2>
+        <p> At EmpireKitchen, we bring a symphony of flavours straight to your door. Discover the perfect harmony of taste, quality, and convenience with every order.</p>
         <a href="#allItems"><button>SHOP NOW</button></a>
       </div>
     </div>

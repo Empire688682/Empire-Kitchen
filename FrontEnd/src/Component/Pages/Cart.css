@@ -1,12 +1,15 @@
 .Cart{
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     padding: 30px 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding-top: 100px;
+    padding-top: 105px;
+    padding-left: 5%;
+    padding-right: 5%;
 }
+
 .cart-head{
     width: 100%;
     padding: 30px 0;
@@ -65,6 +68,7 @@
     font-size: 16px;
     font-weight: bolder;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 /*-ORDER--*/
@@ -123,4 +127,12 @@
     border: none;
     background-color: lightgray;
     border-radius: 3px;
+}
+
+@media (max-width:700px){
+    .order .two_col{
+        flex-basis: 100%;
+        min-width: 300px;
+        margin-bottom: 30px;
+    }
 }
