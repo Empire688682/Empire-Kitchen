@@ -10,15 +10,12 @@ const Verify = () => {
     const wentThrough = queryParams.get("success");
     const {getTotalValue} = UseGlobalContext();
 
-    const [success, setSuccess] = useState(false);
-    console.log(success)
-    useEffect(()=>{
-      setSuccess(wentThrough);
-      if(success === true){
-        localStorage.removeItem("cartItems");
-        console.log("SUCCESS:", success)
+    useEffect(() => {
+      if (wentThrough === 'true') { // Assuming 'true' is the value passed for success
+          localStorage.removeItem("cartItems");
+          console.log("SUCCESS: Payment was successful, cartItems removed.");
       }
-    },[])
+  }, [wentThrough]); 
 
   return (
     <div className="success-container">
