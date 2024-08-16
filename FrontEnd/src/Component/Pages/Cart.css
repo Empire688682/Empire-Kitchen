@@ -129,6 +129,15 @@
     border-radius: 3px;
 }
 
+.pagenotfound{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width:700px){
     .order .two_col{
         flex-basis: 100%;
