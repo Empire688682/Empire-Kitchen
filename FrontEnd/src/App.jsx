@@ -8,7 +8,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './Component/Footer/Footer';
 import Order from './Component/Pages/Order';
 import Verify from './Component/Verify/Verify';
-import Contact from './Component/Contact/Contact';
 
 const App = () => {
   return (
