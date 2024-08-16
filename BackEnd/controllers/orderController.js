@@ -54,6 +54,16 @@ const PlaceOrder = async (req, res) => {
         console.log(error);
         res.json({succes:false, message:"Error"});
     }
+};
+
+const fetchUserOrder = async (req, res) =>{
+    try {
+        const order = await OrderModel.findOne({orderId:_id});
+
+    } catch (error) {
+        console.log("ERROR:", error);
+        res.json({succes:false, message:"ERROR"});
+    }
 }
 
 export { PlaceOrder }
