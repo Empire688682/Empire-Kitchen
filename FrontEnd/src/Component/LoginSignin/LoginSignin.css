@@ -55,6 +55,10 @@ form button{
     padding: 0;
     background-color: red;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 .loading_gif img{
     width: 35px;

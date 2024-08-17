@@ -70,7 +70,7 @@ const LogSign = ({ setLoginStatus }) => {
               value={data.fName}
               name="fName"
               type="text"
-              placeholder='Your First Name'
+              placeholder='First Name'
               required
             />
           )}
@@ -80,7 +80,7 @@ const LogSign = ({ setLoginStatus }) => {
               value={data.lName}
               name="lName"
               type="text"
-              placeholder='Your Last Name'
+              placeholder='Last Name'
               required
             />
           )}
@@ -89,7 +89,7 @@ const LogSign = ({ setLoginStatus }) => {
             value={data.email}
             name="email"
             type="email"
-            placeholder='Your Email'
+            placeholder='Email'
             required
           />
           <input
@@ -97,7 +97,7 @@ const LogSign = ({ setLoginStatus }) => {
             value={data.password}
             name="password"
             type="password"
-            placeholder='Your Password'
+            placeholder='Password'
             required
           />
             {loginStage === "Signup" && (
@@ -112,12 +112,11 @@ const LogSign = ({ setLoginStatus }) => {
               value={data.dBirth}
               name="dBirth"
               type="date"
-              placeholder='Your Last Name'
               required
             />
           )}
           {
-            loading? <button className='loading_gif'><img src={loading_Gif}  alt=""/></button>
+            loading? <button className='loading_gif'><span>PROCESSING</span><img src={loading_Gif}  alt=""/></button>
             :
             <button type='submit'>{loginStage === "Signup" ? "Sign Up" : 'Login'}</button>
           }
