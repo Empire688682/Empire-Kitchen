@@ -12,7 +12,7 @@ const Verify = () => {
 
     useEffect(() => {
       if (wentThrough === 'true') { // Assuming 'true' is the value passed for success
-          localStorage.removeItem("cartItems");
+          localStorage.clear("cartItems");
           setOrderId(orderId);
           console.log("SUCCESS: Payment was successful, cartItems removed.");
       }
@@ -28,7 +28,7 @@ const Verify = () => {
             <p><strong>Order ID:</strong> <span id="order-id">{orderId}</span></p>
             <p><strong>Amount Paid:</strong> $<span id="amount-paid">{getTotalValue()+20}</span></p>
         </div>
-        <a href="/" className="btn">Continue Shopping</a>
+        <a onClick={()=> localStorage.clear("cartItems")} href="/" className="btn">Continue Shopping</a>
     </div>
 </div>
   )
