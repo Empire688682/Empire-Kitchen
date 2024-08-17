@@ -11,11 +11,10 @@ import profile_Icon from '../Asset/profile_icon.png';
 
 const Navbar = () => {
   const [menu, setMenu] = useState("Home");
-  const { token, setToken} = UseGlobalContext();
+  const { token, setToken, loginStatus, setLoginStatus} = UseGlobalContext();
   const navigate = useNavigate();
   const [ismenu, setIsMenu] = useState(false);
   const [background, setBackground] = useState(false);
-  const [loginStatus, setLoginStatus] = useState(false);
 
   useEffect(()=>{
     let lastScrollY = 0;

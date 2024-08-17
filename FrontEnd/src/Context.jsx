@@ -67,6 +67,7 @@ export const ShopProvider = ({children}) => {
   };
 
   const [OrderId, setOrderId] = useState([]);
+  const [loginStatus, setLoginStatus] = useState(false);
   
 
   return <ShopContext.Provider value={{
@@ -83,7 +84,9 @@ export const ShopProvider = ({children}) => {
   setToken,
   OrderId,
   setOrderId,
-  networkError
+  networkError,
+  loginStatus, 
+  setLoginStatus
   }}>
     {children}
   </ShopContext.Provider>

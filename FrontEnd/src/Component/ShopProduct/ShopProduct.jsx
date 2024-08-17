@@ -18,14 +18,16 @@ const ShopProduct = () => {
   const handleAddCart = (id) => {
     if (!token) {
       setLoginStatus(true);
+      console.log("clicked")
       localStorage.removeItem("cartItems");
     }
     else {
       addTocart(id);
       setShipingFeeToggle(true)
     }
-
   }
+
+  console.log(token)
 
   return (
     <div className='shop-product'>

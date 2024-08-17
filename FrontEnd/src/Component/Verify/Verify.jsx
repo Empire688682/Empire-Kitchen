@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Verify.css'
 import { UseGlobalContext } from '../../Context';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const Verify = () => {
     const location = useLocation();
@@ -12,7 +12,7 @@ const Verify = () => {
 
     useEffect(() => {
       if (wentThrough === 'true') { // Assuming 'true' is the value passed for success
-          localStorage.clear("cartItems");
+          localStorage.removeItem("cartItems");
           setOrderId(orderId);
           console.log("SUCCESS: Payment was successful, cartItems removed.");
       }
@@ -28,7 +28,7 @@ const Verify = () => {
             <p><strong>Order ID:</strong> <span id="order-id">{orderId}</span></p>
             <p><strong>Amount Paid:</strong> $<span id="amount-paid">{getTotalValue()+20}</span></p>
         </div>
-        <a onClick={()=> localStorage.removeItem("cartItems")} href="/" className="btn">Continue Shopping</a>
+        <NavLink to="/" className="btn">Continue Shopping</NavLink>
     </div>
 </div>
   )
