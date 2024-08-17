@@ -90,7 +90,7 @@ const Navbar = () => {
           </div>
           <div className="login-section">
             <div className='cart-icon' onClick={menuToTop}>
-              <img src={Cart_Icon} />
+              <img onClick={handleAddCart} src={Cart_Icon} />
             </div>
             {
               token ? <div className='user_con'><img src={profile_Icon} alt="" />

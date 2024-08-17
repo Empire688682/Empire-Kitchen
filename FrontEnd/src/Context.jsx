@@ -9,21 +9,28 @@ export const ShopProvider = ({children}) => {
   const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [loginStatus, setLoginStatus] = useState(false);
-  const url = "https://empire-kitchen-1.onrender.com";
+  const [networkError, setNetworkError] = useState(false);
+  const url = "https://empire-kitchen.onrender.com/";
   
-
   const getFood = async () =>{
     try {
-      const response = await axios.get(url+"/api/foods/food");
-      console.log(response.data.data)
-      setFood_List(response.data.data || [])
+      const response = await axios.get(url+"api/foods/food");
+      if(response){
+        setFood_List(response.data.data)
+      }
+      else{
+        console.log("ERROR")
+      }
     } catch (error) {
-      console.log(error)
+      console.log(error);
+      setNetworkError(true);
     }
   };
 
+  console.log("open error:",networkError)
+
   useEffect(()=>{
-    getFood()
+    getFood();
   },[]);
 
   useEffect(()=>{
@@ -80,7 +87,8 @@ export const ShopProvider = ({children}) => {
   loginStatus, 
   setLoginStatus,
   OrderId,
-  setOrderId
+  setOrderId,
+  networkError
   }}>
     {children}
   </ShopContext.Provider>

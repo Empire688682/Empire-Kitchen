@@ -85,6 +85,10 @@
     cursor: pointer;
 };
 
+.all_Product .fetching_food{
+    background-color: aqua;
+}
+
 @media (max-width:700px){
     .item{
         display: flex;

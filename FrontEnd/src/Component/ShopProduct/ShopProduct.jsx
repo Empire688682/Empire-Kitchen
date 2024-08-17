@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import './ShopProduct.css'
+import './ShopProduct.css';
 import { UseGlobalContext } from '../../Context';
 import Menu from '../Menu/Menu'
 import star_Icon from '../Asset/rating_starts.png';
-import Plus_Icon from '../Asset/add_icon_white.png'
-import Plus_Green from '../Asset/add_icon_green.png'
-import Remove_Green from '../Asset/remove_icon_red.png'
+import Plus_Icon from '../Asset/add_icon_white.png';
+import Plus_Green from '../Asset/add_icon_green.png';
+import Remove_Green from '../Asset/remove_icon_red.png';
 import FastDeliver from '../FastDeliver/FastDeliver';
-import error_Img from '../Asset/Error_404.jpg'
+import error_Img from '../Asset/Error_404.jpg';
+import loading_gif from '../Asset/loading_gif.gif_2.gif'
+
 
 const ShopProduct = () => {
-  const { food_list, cartItems, url, addTocart, removeFromCart, token, setLoginStatus, setShipingFeeToggle } = UseGlobalContext()
+  const { food_list, cartItems, url, addTocart, removeFromCart, token, setLoginStatus, setShipingFeeToggle, networkError } = UseGlobalContext()
   const [category, setCategory] = useState("All");
 
   const handleAddCart = (id) => {
@@ -31,7 +33,7 @@ const ShopProduct = () => {
       <h1 className='title'>Top Meal Near You</h1>
       <div className="all_Product" id='allItems'>
         {
-          food_list.length < 0 ? <div>
+          food_list.length > 0 ? <>
             {
               food_list.map((items) => {
                 if (category === "All" || category === items.category) {
@@ -61,9 +63,18 @@ const ShopProduct = () => {
                 }
               })
             }
-          </div>
+          </>
             :
-            <div id='nofood_available' style={{margin:"50px 0", textAlign:"center"}}> <img src={error_Img} alt="" style={{width:"150px"}}/><h1 style={{color:"red"}}> !Oops! An Error Occured NO Food Available, Please Check Your Internet Connection And Try Again!</h1></div>
+            <>
+              {
+                networkError ? <div id='nofood_available' style={{ margin: "50px 0", textAlign: "center" }}> <img src={error_Img} alt="" style={{ width: "150px" }} /><h1 style={{ color: "red" }}> !Oops! An Error Occured NO Food Available, Please Check Your Internet Connection And Try Again!</h1></div>
+                  :
+                  <div className='fetching_food' style={{ margin: "30px 0", display: "flex", flexDirection: "column", textAlign: "center", backgroundColor: "white", width: "200px", height: "200px", borderRadius: "50%" }}>
+                    <img src={loading_gif} alt="" style={{ width: "200px" }} />
+                    <h2 style={{ color: "black", padding: "10px", borderRadius: "10px", fontSize: "20px", backgroundColor: "white" }}> FETCHING FOOD.......</h2>
+                  </div>
+              }
+            </>
         }
       </div>
       <FastDeliver />
