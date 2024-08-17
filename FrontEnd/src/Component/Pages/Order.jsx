@@ -14,6 +14,7 @@ const Order = () => {
         ZipCode: "",
         Phone: ""
     });
+    const [loading, setLoading] = useState(false);
     const handleOnchange = (e) => {
         const { name, value } = e.target;
         setData((prev) => ({ ...prev, [name]: value }));
@@ -41,6 +42,7 @@ const Order = () => {
             amount:getTotalValue()+20
         }
         try {
+            setLoading(true)
             let response = await axios.post(url+"api/order/place", orderData, {headers:{token}});
             
             if(response.data.success){
@@ -49,6 +51,9 @@ const Order = () => {
             }
         } catch (error) {
             console.log(error)
+        }
+        finally{
+            setLoading(false)
         }
     }
 
@@ -73,7 +78,7 @@ const Order = () => {
                     <div>Subtotal <h4>${getTotalValue()}</h4></div>
                     <div>Delivery fees <h4>$20</h4></div>
                     <div>Total <h4>${getTotalValue() + 20}</h4></div>
-                    <label htmlFor='submitButton' className='button-label'>Proceed to checkout</label>
+                    <label htmlFor='submitButton' className='button-label'>{loading? "Processing...........":"Proceed to checkout"}</label>
                 </div>
             </div>
         </div>
