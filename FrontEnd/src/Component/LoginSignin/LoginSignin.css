@@ -36,13 +36,13 @@
     color: white;
 }
 form input, form select {
-    padding: 10px;
+    padding: 5px;
     outline: none;
     border-radius: 5px;
     border: none;
 }
 form button{
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
     border: none;
     background-color: red;

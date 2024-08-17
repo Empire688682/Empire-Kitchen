@@ -5,7 +5,7 @@ import axios from 'axios';
 import { UseGlobalContext } from '../../Context';
 import loading_Gif from '../Asset/loading_gif.gif'
 
-const LogSign = ({ setLoginStatus }) => {
+const LogSign = ({setLoginStatus}) => {
   const { url, setToken} = UseGlobalContext();
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
@@ -17,11 +17,13 @@ const LogSign = ({ setLoginStatus }) => {
     dBirth: ""
   });
 
-  console.log(data)
-
   const [loginStage, setLogInStage] = useState("Login");
 
   const userControl = async () => {
+    if (!data) {
+      console.error("Data is undefined");
+      return;
+  }
     let newUrl = url;
     if (loginStage === "Login") {
       newUrl += "api/users/login";
@@ -32,17 +34,26 @@ const LogSign = ({ setLoginStatus }) => {
       setLoading(true)
       const response = await axios.post(newUrl, data);
       if (response.data.success) {
+        console.log("Response", response.data);
         setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", response.data.user.name);
+        localStorage.setItem("user", "response.data.token");
         setLoginStatus(false);
+        setData({
+          fName: "",
+          lName: "",
+          email: "",
+          gender: "Male",
+          password: "",
+          dBirth: ""
+        })
       } else {
         alert(response.data.message);
       }
     } catch (error) {
-      console.error("There was an error!", error);
+      console.log(error);
     }
-    finally{
+    finally {
       setLoading(false)
     }
   };
@@ -99,7 +110,7 @@ const LogSign = ({ setLoginStatus }) => {
             placeholder='Password'
             required
           />
-            {loginStage === "Signup" && (
+          {loginStage === "Signup" && (
             <select onChange={handleOnchange} name="gender" value={data.gender}>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -115,9 +126,9 @@ const LogSign = ({ setLoginStatus }) => {
             />
           )}
           {
-            loading? <button className='loading_gif'><span>PROCESSING</span><img src={loading_Gif}  alt=""/></button>
-            :
-            <button type='submit'>{loginStage === "Signup" ? "Sign Up" : 'Login'}</button>
+            loading ? <button className='loading_gif'><span>PROCESSING</span><img src={loading_Gif} alt="" /></button>
+              :
+              <button type='submit'>{loginStage === "Signup" ? "Sign Up" : 'Login'}</button>
           }
         </form>
         <p className='form-policy'>

@@ -41,11 +41,10 @@ const registerUser = async (req, res) => {
 
         const userName = await user.save();
         const token = createToken(userName._id);
-        return res.json({success:true, token});
+        return res.json({success:true, message: "User signed up",  token});
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "fucked" });
     }
 };
 

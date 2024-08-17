@@ -8,7 +8,6 @@ export const ShopProvider = ({children}) => {
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || {});
   const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [loginStatus, setLoginStatus] = useState(false);
   const [networkError, setNetworkError] = useState(false);
   const url = "https://empire-kitchen.onrender.com/";
   
@@ -26,8 +25,6 @@ export const ShopProvider = ({children}) => {
       setNetworkError(true);
     }
   };
-
-  console.log("open error:",networkError)
 
   useEffect(()=>{
     getFood();
@@ -84,8 +81,6 @@ export const ShopProvider = ({children}) => {
   setCartItems,
   token, 
   setToken,
-  loginStatus, 
-  setLoginStatus,
   OrderId,
   setOrderId,
   networkError
