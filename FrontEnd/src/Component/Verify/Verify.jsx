@@ -16,7 +16,7 @@ const Verify = () => {
           setOrderId(orderId);
           console.log("SUCCESS: Payment was successful, cartItems removed.");
       }
-  }, [wentThrough]); 
+  }, []); 
 
   return (
     <div className="success-container">

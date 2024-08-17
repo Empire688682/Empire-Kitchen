@@ -100,7 +100,7 @@
     border-bottom: 1px solid gray;
     padding-bottom: 3px;
 }
-.order .two_col.cart button{
+.order .two_col.cart .button-label{
     padding: 10px 50px;
     border: none;
     border-radius: 20px;

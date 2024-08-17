@@ -73,7 +73,7 @@ const Order = () => {
                     <div>Subtotal <h4>${getTotalValue()}</h4></div>
                     <div>Delivery fees <h4>$20</h4></div>
                     <div>Total <h4>${getTotalValue() + 20}</h4></div>
-                    <button><label htmlFor='submitButton' className='button-label'>Proceed to checkout</label></button>
+                    <label htmlFor='submitButton' className='button-label'>Proceed to checkout</label>
                 </div>
             </div>
         </div>
