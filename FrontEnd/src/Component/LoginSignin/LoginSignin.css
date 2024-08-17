@@ -35,7 +35,7 @@
 .log-sign p{
     color: white;
 }
-form input{
+form input, form select {
     padding: 10px;
     outline: none;
     border-radius: 5px;

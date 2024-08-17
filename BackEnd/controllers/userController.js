@@ -10,8 +10,11 @@ const createToken = (id) =>{
 
 // register function goes here
 const registerUser = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { fName, lName, email, gender, password, dBirth } = req.body;
     try {
+        if(!fName || !lName || !email || !gender || !password || !dBirth){
+            return res.json({ success: false, message: "All field required" });
+        }
         const userExist = await UserModel.findOne({ email });
         if (userExist) {
             return res.json({ success: false, message: "User exist" });
@@ -23,11 +26,16 @@ const registerUser = async (req, res) => {
             return res.json({ success: false, message: "Password too short" });
         }
 
+        console.log(fName, lName, email, gender, password, dBirth);
+
         const passwordHashed = await bcrypt.hash(password, 10);
 
         const user = new UserModel({
-            name: name,
+            fName: fName,
+            lName: lName,
             email: email,
+            gender: gender,
+            dBirth: dBirth,
             password: passwordHashed
         });
 
@@ -37,7 +45,7 @@ const registerUser = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" });
+        res.json({ success: false, message: "fucked" });
     }
 };
 

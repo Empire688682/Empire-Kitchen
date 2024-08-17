@@ -9,10 +9,15 @@ const LogSign = ({ setLoginStatus }) => {
   const { url, setToken} = UseGlobalContext();
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
-    name: "",
+    fName: "",
+    lName: "",
     email: "",
-    password: ""
+    gender: "Male",
+    password: "",
+    dBirth: ""
   });
+
+  console.log(data)
 
   const [loginStage, setLogInStage] = useState("Login");
 
@@ -62,10 +67,20 @@ const LogSign = ({ setLoginStatus }) => {
           {loginStage === "Signup" && (
             <input
               onChange={handleOnchange}
-              value={data.name}
-              name="name"
+              value={data.fName}
+              name="fName"
               type="text"
-              placeholder='Your Name'
+              placeholder='Your First Name'
+              required
+            />
+          )}
+          {loginStage === "Signup" && (
+            <input
+              onChange={handleOnchange}
+              value={data.lName}
+              name="lName"
+              type="text"
+              placeholder='Your Last Name'
               required
             />
           )}
@@ -85,6 +100,22 @@ const LogSign = ({ setLoginStatus }) => {
             placeholder='Your Password'
             required
           />
+            {loginStage === "Signup" && (
+            <select onChange={handleOnchange} name="gender" value={data.gender}>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          )}
+          {loginStage === "Signup" && (
+            <input
+              onChange={handleOnchange}
+              value={data.dBirth}
+              name="dBirth"
+              type="date"
+              placeholder='Your Last Name'
+              required
+            />
+          )}
           {
             loading? <button className='loading_gif'><img src={loading_Gif}  alt=""/></button>
             :
