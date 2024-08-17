@@ -27,8 +27,6 @@ const ShopProduct = () => {
     }
   }
 
-  console.log(token)
-
   return (
     <div className='shop-product'>
       <Menu category={category} setCategory={setCategory} />

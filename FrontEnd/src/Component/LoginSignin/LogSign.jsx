@@ -5,8 +5,8 @@ import axios from 'axios';
 import { UseGlobalContext } from '../../Context';
 import loading_Gif from '../Asset/loading_gif.gif'
 
-const LogSign = ({setLoginStatus}) => {
-  const { url, setToken} = UseGlobalContext();
+const LogSign = ({ setLoginStatus }) => {
+  const { url, setToken } = UseGlobalContext();
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
     fName: "",
@@ -20,24 +20,22 @@ const LogSign = ({setLoginStatus}) => {
   const [loginStage, setLogInStage] = useState("Login");
 
   const userControl = async () => {
-    if (!data) {
-      console.error("Data is undefined");
-      return;
-  }
     let newUrl = url;
     if (loginStage === "Login") {
       newUrl += "api/users/login";
     } else {
       newUrl += "api/users/add";
     }
+
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await axios.post(newUrl, data);
+
       if (response.data.success) {
-        console.log("Response", response.data);
+        console.log("Full Response:", response);
+        console.log("User Data:", response.data.user); // Should log the user data
         setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", "response.data.token");
         setLoginStatus(false);
         setData({
           fName: "",
@@ -46,17 +44,17 @@ const LogSign = ({setLoginStatus}) => {
           gender: "Male",
           password: "",
           dBirth: ""
-        })
+        });
       } else {
         alert(response.data.message);
       }
     } catch (error) {
       console.log(error);
-    }
-    finally {
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
+
 
   const handleOnchange = (e) => {
     const { name, value } = e.target;
