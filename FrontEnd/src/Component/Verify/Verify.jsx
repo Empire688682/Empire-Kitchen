@@ -28,7 +28,7 @@ const Verify = () => {
             <p><strong>Order ID:</strong> <span id="order-id">{orderId}</span></p>
             <p><strong>Amount Paid:</strong> $<span id="amount-paid">{getTotalValue()+20}</span></p>
         </div>
-        <a onClick={()=> localStorage.clear("cartItems")} href="/" className="btn">Continue Shopping</a>
+        <a onClick={()=> localStorage.removeItem("cartItems")} href="/" className="btn">Continue Shopping</a>
     </div>
 </div>
   )
