@@ -41,7 +41,6 @@ const LogSign = ({ setLoginStatus }) => {
       }
     } catch (error) {
       console.error("There was an error!", error);
-      alert("An error occurred. Please try again.");
     }
     finally{
       setLoading(false)
