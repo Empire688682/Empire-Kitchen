@@ -53,6 +53,18 @@
 }
 .cart-icon{
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cart-icon p{
+    width: 13px;
+    height: 14px;
+    background-color: red;
+    color: red;
+    border-radius: 50%;
+    transform: translateX(10px);
+    position: absolute;
 }
 .cart-icon img{
     background-color: white;
@@ -188,7 +200,9 @@
         display: none;
     }
     .cart-icon-mobile{
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: absolute;
         right: 100px;
         top: 30px;
@@ -197,10 +211,14 @@
         border-radius: 50%;
         cursor: pointer;
     }
-    .cart-icon-mobile span{
-        width: 10px;
-        height: 10px;
+    .cart-icon-mobile p{
+        width: 12px;
+        height: 12px;
         background-color: red;
+        color: red;
+        border-radius: 50%;
+        transform: translateX(10px);
+        position: absolute;
     }
     .login-section{
         display: flex;

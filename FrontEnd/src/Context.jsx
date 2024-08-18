@@ -70,16 +70,12 @@ export const ShopProvider = ({children}) => {
 
   const [OrderId, setOrderId] = useState([]);
   const [loginStatus, setLoginStatus] = useState(false);
-  const [cartAdd, setCartAdd] = useState(false);
+  const [cartAdd, setCartAdd] = useState(JSON.parse(localStorage.getItem("cartAdd")) || false);
 
-  const handleCartIcon = () =>{
-    let isInCart = false;
-    food_list.forEach((item) =>{
-      if(cartItems[item._id] > 0){
-        isInCart = true;
-      }
-    })
+  const handleCartIcon = () => {
+    let isInCart = Object.keys(cartItems).some((itemId) => cartItems[itemId] > 0);
     setCartAdd(isInCart);
+    localStorage.setItem("cartAdd", JSON.stringify(isInCart));
   };
 
   useEffect(()=>{

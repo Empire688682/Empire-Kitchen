@@ -83,7 +83,7 @@ const Navbar = () => {
         </div>
         <div className='cart-icon-mobile' onClick={menuToTop2}>
               <img onClick={handleAddCart} src={Cart_Icon} />
-              {cartAdd? <span>h</span>:null}
+              {cartAdd? <p></p>:null}
             </div>
         <div className="menu_icon">
           <img onClick={() => setIsMenu(!ismenu)} src={ismenu ? menu_Close : menu_Open} alt="" />
@@ -99,7 +99,7 @@ const Navbar = () => {
           <div className="login-section">
             <div className='cart-icon' onClick={menuToTop}>
               <img onClick={handleAddCart} src={Cart_Icon} />
-              {cartAdd? <span></span>:null}
+              {cartAdd? <p></p>:null}
             </div>
             {
               token && token ? <div className='user_con'><img src={profile_Icon} alt="" />
