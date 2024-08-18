@@ -9,7 +9,7 @@ import { orderRouter } from "./routes/orderRouter.js";
 dotenv.config()
 
 const app = express();
-const port = 6886;
+const port = process.env.PORT || 6886;
 
 // Middleware
 app.use(express.json());

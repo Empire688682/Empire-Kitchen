@@ -6,7 +6,7 @@ import { UseGlobalContext } from '../../Context';
 import loading_Gif from '../Asset/loading_gif.gif'
 
 const LogSign = ({ setLoginStatus }) => {
-  const { url, setToken } = UseGlobalContext();
+  const { url } = UseGlobalContext();
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
     fName: "",
@@ -33,9 +33,8 @@ const LogSign = ({ setLoginStatus }) => {
 
       if (response.data.success) {
         console.log("Full Response:", response);
-        console.log("User Data:", response.data.user); // Should log the user data
-        setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("User Data", response.data.user);
         setLoginStatus(false);
         setData({
           fName: "",
@@ -45,6 +44,7 @@ const LogSign = ({ setLoginStatus }) => {
           password: "",
           dBirth: ""
         });
+        window.location.reload()
       } else {
         alert(response.data.message);
       }

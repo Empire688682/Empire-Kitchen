@@ -11,10 +11,12 @@ import profile_Icon from '../Asset/profile_icon.png';
 
 const Navbar = () => {
   const [menu, setMenu] = useState("Home");
-  const { token, setToken, loginStatus, setLoginStatus} = UseGlobalContext();
+  const { token, setToken, loginStatus, setLoginStatus, cartAdd} = UseGlobalContext();
   const navigate = useNavigate();
   const [ismenu, setIsMenu] = useState(false);
   const [background, setBackground] = useState(false);
+
+  console.log(cartAdd)
 
   useEffect(()=>{
     let lastScrollY = 0;
@@ -39,7 +41,7 @@ const Navbar = () => {
     localStorage.removeItem("cartItems");
     setToken("");
     navigate("/");
-    localStorage.removeItem("user")
+    localStorage.removeItem("User Data")
     window.location.reload();
   }
 
@@ -51,6 +53,11 @@ const Navbar = () => {
   const menuToTop2 = () => {
     setIsMenu(false);
     window.scrollTo(0, 20)
+  }
+
+  const handleSignupClick = () => {
+    setIsMenu(false);
+    setLoginStatus(true)
   }
 
   const handleAddCart = () => {
@@ -76,6 +83,7 @@ const Navbar = () => {
         </div>
         <div className='cart-icon-mobile' onClick={menuToTop2}>
               <img onClick={handleAddCart} src={Cart_Icon} />
+              {cartAdd? <span>h</span>:null}
             </div>
         <div className="menu_icon">
           <img onClick={() => setIsMenu(!ismenu)} src={ismenu ? menu_Close : menu_Open} alt="" />
@@ -91,16 +99,17 @@ const Navbar = () => {
           <div className="login-section">
             <div className='cart-icon' onClick={menuToTop}>
               <img onClick={handleAddCart} src={Cart_Icon} />
+              {cartAdd? <span></span>:null}
             </div>
             {
-              token ? <div className='user_con'><img src={profile_Icon} alt="" />
+              token && token ? <div className='user_con'><img src={profile_Icon} alt="" />
                 <ul>
                   <NavLink to="/profile" className='li' onClick={() => setIsMenu(false)} style={{textDecoration:"none"}}>Profile</NavLink>
                   <li className='li' onClick={() => setIsMenu(false)} ><p onClick={logoutUser}>Logout</p></li>
                 </ul>
               </div>
                 :
-                <button className='signup_button' onClick={() => setLoginStatus(true)} >Signup</button>
+                <button className='signup_button' onClick={handleSignupClick} >Signup</button>
             }
           </div>
         </div>

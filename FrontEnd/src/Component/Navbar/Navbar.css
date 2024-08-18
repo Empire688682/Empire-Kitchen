@@ -197,6 +197,11 @@
         border-radius: 50%;
         cursor: pointer;
     }
+    .cart-icon-mobile span{
+        width: 10px;
+        height: 10px;
+        background-color: red;
+    }
     .login-section{
         display: flex;
         position: absolute;

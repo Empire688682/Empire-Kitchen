@@ -3,11 +3,6 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-//token function goes here
-const createToken = (id) => {
-    return jwt.sign({ id }, process.env.TOKEN_KEY);
-}
-
 // register function goes here
 const registerUser = async (req, res) => {
     const { fName, lName, email, gender, password, dBirth } = req.body;
@@ -38,10 +33,15 @@ const registerUser = async (req, res) => {
         });
 
         const savedUser = await user.save();
-        const token = createToken(savedUser._id);
+        console.log(savedUser);
+        
+
+        const token = jwt.sign({ id:user._id }, process.env.TOKEN_KEY);
         return res.json({
             success: true,
-            message: "User signed up"
+            message: "User signed up",
+            token,
+            user
         })
 
     } catch (error) {
@@ -65,7 +65,7 @@ const loginUser = async (req, res) => {
             res.json({ success: false, message: "Incorrect password" });
         }
 
-        const token = createToken(user._id);
+        const token = jwt.sign({ id:user._id }, process.env.TOKEN_KEY);
         res.json({ success: true,  message: "User login", token, user });
     } catch (error) {
         console.log(error);
