@@ -1,7 +1,11 @@
 import './Profile.css';
-import React from 'react'
+import React, { useState } from 'react'
 
 const Profile = () => {
+  const [user, setUser] = useState(localStorage.getItem("User Data") || "");
+  console.log(user);
+  
+  
   return (
     <div className='profile'>
       <div className="small_col">

@@ -32,11 +32,9 @@ const registerUser = async (req, res) => {
             password: passwordHashed
         });
 
-        const savedUser = await user.save();
-        console.log(savedUser);
-        
+        await user.save();
 
-        const token = jwt.sign({ id:user._id }, process.env.TOKEN_KEY);
+        const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY);
         return res.json({
             success: true,
             message: "User signed up",
@@ -65,8 +63,8 @@ const loginUser = async (req, res) => {
             res.json({ success: false, message: "Incorrect password" });
         }
 
-        const token = jwt.sign({ id:user._id }, process.env.TOKEN_KEY);
-        res.json({ success: true,  message: "User login", token, user });
+        const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY);
+        return res.json({ success: true, message: "User login", token, user });
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: "Error" });

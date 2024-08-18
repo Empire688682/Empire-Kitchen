@@ -34,7 +34,8 @@ const LogSign = ({ setLoginStatus }) => {
       if (response.data.success) {
         console.log("Full Response:", response);
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("User Data", response.data.user);
+        const User = response.data.user
+        localStorage.setItem("User Data", JSON.stringify(User));
         setLoginStatus(false);
         setData({
           fName: "",
@@ -44,7 +45,7 @@ const LogSign = ({ setLoginStatus }) => {
           password: "",
           dBirth: ""
         });
-        window.location.reload()
+        window.location.replace("/")
       } else {
         alert(response.data.message);
       }
@@ -129,10 +130,6 @@ const LogSign = ({ setLoginStatus }) => {
               <button type='submit'>{loginStage === "Signup" ? "Sign Up" : 'Login'}</button>
           }
         </form>
-        <p className='form-policy'>
-          <input type='checkbox' required />
-          <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet illo laborum accusamus modi consequuntur ipsam iusto quas saepe eveniet nulla, ipsa doloremque soluta velit minus ea rerum consequatur, vero deserunt.</span>
-        </p>
         <div className="login-status">
           {loginStage === "Signup" ? (
             <p className='create-already'>Already have an account? <span onClick={() => setLogInStage("Login")}>Login</span></p>

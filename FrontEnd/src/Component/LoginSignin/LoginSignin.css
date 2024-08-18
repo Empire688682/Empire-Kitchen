@@ -31,12 +31,13 @@
     flex-direction: column;
     margin-bottom: 10px;
     gap: 10px;
+    min-width: 300px;
 }
 .log-sign p{
     color: white;
 }
 form input, form select {
-    padding: 5px;
+    padding: 10px;
     outline: none;
     border-radius: 5px;
     border: none;
@@ -62,14 +63,6 @@ form button{
 }
 .loading_gif img{
     width: 35px;
-}
-.form-policy input{
-    width: 20px;
-    height: 20px;
-    background-color: black;
-    font-size: 30px;
-    cursor: pointer;
-    transform: translateY(5px);
 }
 .create-already span{
     color: blue;
