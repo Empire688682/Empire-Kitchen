@@ -100,7 +100,7 @@ const Profile = () => {
               required
             />
             {
-              resMessage ? <p style={{color:"black"}}>Saved Changed</p>:<p style={{color:"black"}}>An Error Occured</p>
+              resMessage ? <p style={{color:"black"}}>Saved Changed</p>:""
             }
           <input type='submit' value={loading? "Saving...":"Save Change"}></input>
         </form>
