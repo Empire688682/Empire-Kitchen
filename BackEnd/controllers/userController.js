@@ -70,5 +70,39 @@ const loginUser = async (req, res) => {
         res.json({ success: false, message: "Error" });
     }
 };
+const edditUserDetails = async (req, res) => {
+    const { userId, fName, lName, email, gender, dBirth } = req.body;
+    try {
+        if (!fName || !lName || !email || !gender || !dBirth) {
+            return res.json({ success: false, message: "All fields required" });
+        }
+        //checking isUser
+        const user = await UserModel.findOne({ _id:userId });
+        if (!user) {
+            res.json({ success: false, message: " You are Not Authorized" });
+        }
+        if (!validator.isEmail(email)) {
+            return res.json({ success: false, message: "Enter a valid email" });
+        };
 
-export { registerUser, loginUser };
+        user.fName = fName;
+        user.lName = lName;
+        user.gender = gender;
+        user.gender = gender;
+        user.dBirth = dBirth;
+
+        await user.save();
+        
+        return res.json({
+            success: true,
+            message: "Save Changed",
+            user
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+};
+
+export { registerUser, loginUser, edditUserDetails };

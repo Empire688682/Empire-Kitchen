@@ -7,7 +7,7 @@ import loading_Gif from '../Asset/loading_gif.gif'
 
 const LogSign = ({ setLoginStatus }) => {
   const { url } = UseGlobalContext();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     fName: "",
     lName: "",
