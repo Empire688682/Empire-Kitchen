@@ -18,6 +18,58 @@
     box-shadow: 0 0 10px black;
     padding: 20px;
     border-radius: 5px;
+    position: relative;
+}
+.small_col h2{
+    box-shadow: 0 0 5px black;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(36, 34, 34);
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+.small_col ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 80px;
+}
+.small_col ul li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(36, 34, 34);
+    cursor: pointer;
+    padding: 10px;
+    transition: .5s ease-in-out;
+    max-width: 250px;
+}
+.small_col ul li:hover{
+    color: ghostwhite;
+    cursor: pointer;
+    background-color: #1b1b1b;
+}
+.small_col p{
+    position: absolute;
+    right: 0;
+    bottom:0;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap:5px ;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px;
+}
+.small_col p:hover{
+    color: ghostwhite;
+    cursor: pointer;
+    background-color: #1b1b1b;
 }
 .big_col{
     flex-basis: 60%;
@@ -27,7 +79,13 @@
     border-radius: 10px;
 }
 .big_col h2{
+    box-shadow: 0 0 5px black;
+    padding: 8px;
+    border-radius: 5px;
     color: rgb(36, 34, 34);
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 400;
 }
 .big_col form{
     width: 100%;
@@ -46,6 +104,7 @@
    max-width: 300px;
    border: 1px solid darkgray;
    font-size: 18px;
+   cursor: pointer;
 }
  
 
