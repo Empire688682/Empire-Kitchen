@@ -10,8 +10,8 @@ export const ShopProvider = ({children}) => {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [networkError, setNetworkError] = useState(false);
 
-  const url = "https://empire-kitchen.onrender.com/";
-  //const url = "http://localhost:6886/";
+  //const url = "https://empire-kitchen.onrender.com/";
+  const url = "http://localhost:6886/";
   
   const getFood = async () =>{
     try {

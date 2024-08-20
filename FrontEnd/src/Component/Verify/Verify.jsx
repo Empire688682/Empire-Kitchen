@@ -13,7 +13,7 @@ const Verify = () => {
     useEffect(() => {
       if (wentThrough === 'true') { // Assuming 'true' is the value passed for success
           localStorage.removeItem("cartItems");
-          setOrderId(orderId);
+          setOrderId(orderId || "");
           console.log("SUCCESS: Payment was successful, cartItems removed.");
       }
   }, []); 

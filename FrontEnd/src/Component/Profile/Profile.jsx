@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { BsFillBagFill } from "react-icons/bs";
 import { IoLogOut } from "react-icons/io5";
 import { useNavigate} from 'react-router-dom';
+import MyOrder from '../MyOrder/MyOrder';
 
 const Profile = () => {
   const { url, setToken } = UseGlobalContext()
@@ -124,12 +125,11 @@ const Profile = () => {
             </div>
           </div>
           :
-          <div className="big_col">
+          <div className="big_col order_Page">
             <div className="content_block_title">
               <h2>My Order</h2>
             </div>
-            <h3 style={{color:"black"}}>Comming Soon</h3>
-            <p style={{color:"black"}}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus velit harum labore minima magnam, quod atque! Facilis sint, dolorum, architecto, ratione reiciendis esse ab at iure omnis est veritatis similique?</p>
+            <MyOrder user={user.fName}/>
           </div>
       }
     </div>

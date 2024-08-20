@@ -57,6 +57,9 @@ const PlaceOrder = async (req, res) => {
 
 const fetchUserOrder = async (req, res) =>{
     const {OrderId} = req.body;
+    if(!OrderId){
+        return res.json({succes:true, message:"No OrderId found"});
+    }
     try {
         const order = await OrderModel.findById({_id:OrderId});
 
@@ -64,7 +67,7 @@ const fetchUserOrder = async (req, res) =>{
             return res.json({succes:true, message:"No Order found"});
         }
 
-        return res.json({success:true, order, message:"Oreder founded"});
+        return res.json({success:true, order, message:"Order founded"});
 
     } catch (error) {
         console.log("ERROR:", error);
