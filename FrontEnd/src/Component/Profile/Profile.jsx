@@ -127,7 +127,7 @@ const Profile = () => {
           :
           <div className="big_col order_Page">
             <div className="content_block_title">
-              <h2>My Order</h2>
+              <h2>@ <span>{user.fName}</span> Welcome to your Order Page</h2>
             </div>
             <MyOrder user={user.fName}/>
           </div>

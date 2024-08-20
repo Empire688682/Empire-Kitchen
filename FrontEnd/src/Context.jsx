@@ -82,6 +82,7 @@ export const ShopProvider = ({children}) => {
     handleCartIcon();
   },[cartItems]);
 
+  console.log("Context:",OrderId)
   
   return <ShopContext.Provider value={{
   food_list,

@@ -16,8 +16,6 @@ const Navbar = () => {
   const [ismenu, setIsMenu] = useState(false);
   const [background, setBackground] = useState(false);
 
-  console.log(cartAdd)
-
   useEffect(()=>{
     let lastScrollY = 0;
     const handleScroll = () =>{

@@ -78,8 +78,10 @@
     padding: 20px;
     border-radius: 10px;
 }
-.big_col.order_Page{
-    
+.big_col.order_Page span{
+    color: rgb(11, 233, 11);
+    font-weight: bolder;
+    text-transform: uppercase;
 }
 .big_col h2{
     box-shadow: 0 0 5px black;

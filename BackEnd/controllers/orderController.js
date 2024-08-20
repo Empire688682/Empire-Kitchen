@@ -6,7 +6,8 @@ const stripe = new Stripe(process.env.STRIPE_KEY);
 //Placing user order from frontEnd
 const PlaceOrder = async (req, res) => {
     const {userId, items, amount, address} = req.body;
-    const frontEndUrl = "https://empire-kitchen-1.onrender.com";
+    //const frontEndUrl = "https://empire-kitchen-1.onrender.com";
+    const frontEndUrl = "http://localhost:5173";
     
     try {
         const newOrder = new OrderModel({
@@ -35,7 +36,7 @@ const PlaceOrder = async (req, res) => {
                 product_data:{
                     name:"Delivery Charges"
                 },
-                unit_amount:2*100*1500
+                unit_amount:20*100*1500
             },
             quantity:1
         });
@@ -58,7 +59,7 @@ const PlaceOrder = async (req, res) => {
 const fetchUserOrder = async (req, res) =>{
     const {OrderId} = req.body;
     if(!OrderId){
-        return res.json({succes:true, message:"No OrderId found"});
+        return res.json({succes:false, message:"No OrderId found"});
     }
     try {
         const order = await OrderModel.findById({_id:OrderId});
@@ -66,6 +67,8 @@ const fetchUserOrder = async (req, res) =>{
         if(!order){
             return res.json({succes:true, message:"No Order found"});
         }
+
+        console.log("USERORDER:", order);
 
         return res.json({success:true, order, message:"Order founded"});
 

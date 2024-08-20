@@ -3,19 +3,22 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { UseGlobalContext } from '../../Context';
 
-const MyOrder = ({ user }) => {
+const MyOrder = () => {
   const { url, OrderId } = UseGlobalContext()
-  const [myOrder, setMyOrder] = useState('');
+  const [myOrder, setMyOrder] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
+  console.log("MyOrder:", myOrder);
 
-  const fetchOrder = async () => {
+  const fetchOrderId = async () => {
+    console.log("MyOrder:",OrderId);
     if (OrderId.length > 0) {
       try {
         setLoading(true);
-        const response = await axios.get(url + "api/order/orderId", { OrderId });
+        console.log("MyOrderAfter:",OrderId);
+        const response = await axios.get(url + "api/order/orderId", {headers:{OrderId}});
         if (response) {
-          console.log(response.data);
+          console.log("Response", response);
         }
       } catch (error) {
         console.log(error)
@@ -30,16 +33,23 @@ const MyOrder = ({ user }) => {
   };
 
   useEffect(() => {
-    fetchOrder()
+    fetchOrderId()
   }, [])
   return (
     <div className='my_order'>
-      <h1>@ <span>{user}</span> Welcome to your Order Page</h1>
       {
-        myOrder ? <>Order available</>
+        myOrder ? <div className='available_Order_Con'>
+          {
+            loading ? <h2>Loading.........</h2>
+              :
+              <>
+                Order available
+              </>
+          }
+        </div>
           :
           <div>
-            <h2>No Order Available</h2>
+            <h3 style={{color:"black"}}>!ORDER EMPTY!</h3>
           </div>
       }
     </div>
