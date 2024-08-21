@@ -68,7 +68,7 @@ export const ShopProvider = ({children}) => {
     return total;
   };
 
-  const [OrderId, setOrderId] = useState([]);
+  const [OrderId, setOrderId] = useState("66c53ff27e59190155a99c07");
   const [loginStatus, setLoginStatus] = useState(false);
   const [cartAdd, setCartAdd] = useState(JSON.parse(localStorage.getItem("cartAdd")) || false);
 

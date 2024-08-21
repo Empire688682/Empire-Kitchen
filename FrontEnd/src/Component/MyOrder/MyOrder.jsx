@@ -5,36 +5,38 @@ import { UseGlobalContext } from '../../Context';
 
 const MyOrder = () => {
   const { url, OrderId } = UseGlobalContext()
-  const [myOrder, setMyOrder] = useState("");
+  const [myOrder, setMyOrder] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [order, setOrder] = useState([]);
   const [message, setMessage] = useState('');
+
   console.log("MyOrder:", myOrder);
 
   const fetchOrderId = async () => {
-    console.log("MyOrder:",OrderId);
-    if (OrderId.length > 0) {
-      try {
+    try {
         setLoading(true);
-        console.log("MyOrderAfter:",OrderId);
-        const response = await axios.get(url + "api/order/orderId", {headers:{OrderId}});
-        if (response) {
-          console.log("Response", response);
-        }
-      } catch (error) {
-        console.log(error)
-      }
-      finally {
-        setLoading(false)
-      }
-    }
-    else {
-      return null
-    }
-  };
+        const response = await axios.get(`${url}api/order/orderId`, {
+            params: { OrderId }
+        });
 
-  useEffect(() => {
-    fetchOrderId()
-  }, [])
+        if (response.data.success) {
+            console.log("Response", response.data.orderData);
+            setMyOrder(response.data);
+        } else {
+            setMessage(response.data.message);
+        }
+    } catch (error) {
+        console.log(error.message);
+        setMessage("Failed to fetch order");
+    } finally {
+        setLoading(false);
+    }
+};
+
+    useEffect(() => {
+      fetchOrderId();
+    }, []);
+
   return (
     <div className='my_order'>
       {
