@@ -68,7 +68,6 @@ export const ShopProvider = ({children}) => {
     return total;
   };
 
-  const [OrderId, setOrderId] = useState("66c53ff27e59190155a99c07");
   const [loginStatus, setLoginStatus] = useState(false);
   const [cartAdd, setCartAdd] = useState(JSON.parse(localStorage.getItem("cartAdd")) || false);
 
@@ -81,8 +80,6 @@ export const ShopProvider = ({children}) => {
   useEffect(()=>{
     handleCartIcon();
   },[cartItems]);
-
-  console.log("Context:",OrderId)
   
   return <ShopContext.Provider value={{
   food_list,
@@ -96,8 +93,6 @@ export const ShopProvider = ({children}) => {
   setCartItems,
   token, 
   setToken,
-  OrderId,
-  setOrderId,
   networkError,
   loginStatus, 
   setLoginStatus,

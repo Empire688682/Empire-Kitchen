@@ -1,12 +1,65 @@
-.my_order{
+.myOrder{
     width: 100%;
-    margin: 0 auto;
-    margin-top: 10px;
-    margin-right: auto;
-    background-color: white;
+    color: black;
 }
-.available_Order_Con{
-    box-shadow: 0 0 5px black;
-    padding: 20px;
-    border-radius: 5px;
+.myOrder .header, .myOrder .content{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 10px 20px;
+    justify-content: space-between;
+    width: 100%;
+}
+.header .image{
+    flex-basis: 10%;
+    width: 100%;
+    font-weight: 500;
+}
+.header .name{
+    flex-basis: 40%;
+    flex: 1;
+    width: 100%;
+    font-weight: 500;
+}
+.header .category{
+    flex-basis: 20%;
+    width: 100%;
+    font-weight: 500;
+}
+.header .price{
+    flex-basis: 10%;
+    width: 100%;
+    font-weight: 500;
+}
+.header .remove{
+    flex-basis: 10%;
+    width: 100%;
+    font-weight: 500;
+}
+.content .image{
+    flex-basis: 10%;
+    width: 100%;
+}
+.image img{
+    width: 60px;
+    height: 60px;
+}
+.content .name{
+    flex-basis: 40%;
+    flex: 1;
+    width: 100%;
+}
+.content .category{
+    flex-basis: 20%;
+    width: 100%;
+}
+.content .price{
+    flex-basis: 10%;
+    width: 100%;
+}
+.content .remove{
+    flex-basis: 10%;
+    width: 100%;
+    cursor: pointer;
 }

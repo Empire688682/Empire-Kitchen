@@ -8,14 +8,14 @@ const Verify = () => {
     const queryParams = new URLSearchParams(location.search);
     const orderId =  queryParams.get('orderId');
     const wentThrough = queryParams.get("success");
-    const {getTotalValue,setOrderId} = UseGlobalContext();
+    const {getTotalValue} = UseGlobalContext();
 
     console.log("VERIFY:",orderId)
 
     useEffect(() => {
       if (wentThrough === 'true') { // Assuming 'true' is the value passed for success
           localStorage.removeItem("cartItems");
-          setOrderId(orderId || "");
+          localStorage.setItem("orderId", orderId)
       }
   }, []); 
 

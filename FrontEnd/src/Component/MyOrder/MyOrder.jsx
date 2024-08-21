@@ -4,63 +4,71 @@ import axios from 'axios';
 import { UseGlobalContext } from '../../Context';
 
 const MyOrder = () => {
-  const { url, OrderId } = UseGlobalContext()
-  const [myOrder, setMyOrder] = useState(null);
+  const { url } = UseGlobalContext();
+  const [orderId, setOrderId] = useState(localStorage.getItem("orderId") || "")
+  const [userOrder, setUserOrder] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [order, setOrder] = useState([]);
   const [message, setMessage] = useState('');
 
-  console.log("MyOrder:", myOrder);
-
-  const fetchOrderId = async () => {
+  console.log(userOrder);
+  const fetchOrder = async () => {
     try {
-        setLoading(true);
-        const response = await axios.get(`${url}api/order/orderId`, {
-            params: { OrderId }
-        });
+      setLoading(true);
+      const response = await axios.get(`${url}api/order/orderId`, {
+        params: { orderId }
+      });
 
-        if (response.data.success) {
-            console.log("Response", response.data.orderData[0]);
-            setMyOrder(response.data.orderData[0]);
-        } else {
-            setMessage(response.data.message);
-        }
+      if (response.data.success) {
+        console.log("Response", response.data.orderData);
+        localStorage.setItem("userOrder", response.data.order);
+        setUserOrder(response.data.order);
+      } else {
+        setMessage(response.data.message);
+      }
     } catch (error) {
-        console.log(error.message);
-        setMessage("Failed to fetch order");
+      console.log(error.message);
+      setMessage("Failed to fetch order");
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
-};
+  };
 
-    useEffect(() => {
-      fetchOrderId();
-    }, []);
+  useEffect(() => {
+    fetchOrder();
+  }, []);
 
   return (
-    <div className='my_order'>
+    <div className='myOrder'>
+      <div className="header">
+        <div className="image">Image</div>
+        <div className="name">Name</div>
+        <div className="name">Status</div>
+        <div className="remove">Remove</div>
+      </div>
       {
-        myOrder ? <div className='available_Order_Con'>
+        userOrder.length > 0 ? <>
           {
-            loading ? <h2>Loading.........</h2>
+            loading ? <h3>Loading....</h3>
               :
               <>
-                  <h3>Name: {myOrder.name}</h3>
-                  <p>Quantity: {myOrder.quantity}</p>
-                  <div>
-                    <p>Image:</p>
-                    <img src={`${url}images/${myOrder.image}`} alt=""/>
-                  </div>
+                {
+                  userOrder.map((order) => {
+                    return <div className="content" key={order._id}>
+                      <div className="image">
+                        <img src={`${url}images/${order.image}`} alt="" />
+                      </div>
+                      <div className="name">{order.name}</div>
+                      <div className="name">Order Processing</div>
+                      <div className="remove">X</div>
+                    </div>
+                  })
+                }
               </>
           }
-        </div>
-          :
-          <div>
-            <h3 style={{color:"black"}}>!ORDER EMPTY!</h3>
-          </div>
+        </> : <>No order available</>
       }
     </div>
-  )
+  );
 }
 
-export default MyOrder
+export default MyOrder;

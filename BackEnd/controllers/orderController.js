@@ -58,22 +58,20 @@ const PlaceOrder = async (req, res) => {
 
 
 const fetchUserOrder = async (req, res) => {
-    const { OrderId } = req.query;  // Retrieve from query parameters
+    const { orderId } = req.query;  // Retrieve from query parameters
 
-    if (!OrderId) {
+    if (!orderId) {
         return res.json({ success: false, message: "No OrderId found" });
     }
     try {
-        const order = await OrderModel.findById(OrderId);
+        const order = await OrderModel.findById(orderId);
 
         if (!order) {
             return res.json({ success: true, message: "No Order found" });
         }
 
-        const orderData = order.items
-
-        console.log("ORDERData:", orderData);
-        return res.json({ success: true, orderData, message: "Order found" });
+        console.log("ORDERData:", order);
+        return res.json({ success: true, order:order.items, message: "Order found" });
 
     } catch (error) {
         console.log("ERROR:", error);
