@@ -42,7 +42,7 @@ const MyOrder = () => {
       <div className="header">
         <div className="image">Image</div>
         <div className="name">Name</div>
-        <div className="name">Status</div>
+        <div className="name">Payment Details</div>
         <div className="remove">Remove</div>
       </div>
       {
@@ -57,7 +57,11 @@ const MyOrder = () => {
                       <div className="image">
                         <img src={`${url}images/${order.image}`} alt="" />
                       </div>
-                      <div className="name">{order.name}</div>
+                      <div className="name">
+                        <p>{order.name}</p>
+                        <p>${order.price}</p>
+                        <p>Quantity: {order.quantity}</p>
+                      </div>
                       <div className="name">Order Processing</div>
                       <div className="remove">X</div>
                     </div>
