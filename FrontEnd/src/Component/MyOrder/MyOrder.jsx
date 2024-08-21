@@ -20,8 +20,8 @@ const MyOrder = () => {
         });
 
         if (response.data.success) {
-            console.log("Response", response.data.orderData);
-            setMyOrder(response.data);
+            console.log("Response", response.data.orderData[0]);
+            setMyOrder(response.data.orderData[0]);
         } else {
             setMessage(response.data.message);
         }
@@ -45,7 +45,12 @@ const MyOrder = () => {
             loading ? <h2>Loading.........</h2>
               :
               <>
-                Order available
+                  <h3>Name: {myOrder.name}</h3>
+                  <p>Quantity: {myOrder.quantity}</p>
+                  <div>
+                    <p>Image:</p>
+                    <img src={`${url}images/${myOrder.image}`} alt=""/>
+                  </div>
               </>
           }
         </div>

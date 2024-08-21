@@ -70,8 +70,10 @@ const fetchUserOrder = async (req, res) => {
             return res.json({ success: true, message: "No Order found" });
         }
 
+        const orderData = order.items
+
         console.log("ORDERData:", orderData);
-        return res.json({ success: true, order, message: "Order found" });
+        return res.json({ success: true, orderData, message: "Order found" });
 
     } catch (error) {
         console.log("ERROR:", error);
