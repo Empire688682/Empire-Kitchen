@@ -57,7 +57,7 @@ const ShopProduct = () => {
                         <img src={star_Icon} />
                       </div>
                       <p className="description">{items.description}</p>
-                      <p className='price'>${items.price}</p>
+                      <p className='price'>#{items.price}</p>
                     </div>
                   )
                 }

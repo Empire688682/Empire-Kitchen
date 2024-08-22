@@ -49,6 +49,9 @@ const Order = () => {
                 const {session_url} = response.data;
                 window.location.replace(session_url);
             }
+            else{
+                window.alert(response.data.message)
+            }
         } catch (error) {
             console.log(error)
         }
@@ -75,9 +78,9 @@ const Order = () => {
                 </div>
                 <div className="two_col cart ">
                     <h3>Cart Totals</h3>
-                    <div>Subtotal <h4>${getTotalValue()}</h4></div>
-                    <div>Delivery fees <h4>$20</h4></div>
-                    <div>Total <h4>${getTotalValue() + 20}</h4></div>
+                    <div>Subtotal <h4>#{getTotalValue()}</h4></div>
+                    <div>Delivery fees <h4>#2000</h4></div>
+                    <div>Total <h4>#{getTotalValue() + 20}</h4></div>
                     <label htmlFor='submitButton' className='button-label'>{loading? "Processing...........":"Proceed to checkout"}</label>
                 </div>
             </div>

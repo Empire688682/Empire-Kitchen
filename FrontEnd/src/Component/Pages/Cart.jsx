@@ -4,7 +4,7 @@ import './Cart.css';
 import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
-  const { food_list, shipingFeeToggle, cartItems, removeFromCart, addTocart, getTotalValue } = UseGlobalContext()
+  const { food_list, cartItems, removeFromCart, addTocart, getTotalValue } = UseGlobalContext()
   return (
     <div className='Cart'>
       <div className="cart-head">
@@ -18,7 +18,7 @@ const Cart = () => {
           if (cartItems[item._id] > 0) {
             return <div className="cart-head cart-items" key={item._id}>
               <p className='product'>{item.name}</p>
-              <p className='head-title'>${item.price}</p>
+              <p className='head-title'>#{item.price}</p>
               <div className='head-title quantity-con'>
                 <h3 className='quantity'>{cartItems[item._id]}</h3>
                 <div className='plus-minus'>
@@ -26,7 +26,7 @@ const Cart = () => {
                   <p onClick={() => removeFromCart(item._id)}>-</p>
                 </div>
               </div>
-              <p className='head-title'>${item.price * cartItems[item._id]}</p>
+              <p className='head-title'>#{item.price * cartItems[item._id]}</p>
             </div>
           }
           else{
