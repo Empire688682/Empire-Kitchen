@@ -1,11 +1,13 @@
 import './MyOrder.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { UseGlobalContext } from '../../Context';
 
 const MyOrder = () => {
   const { url } = UseGlobalContext();
-  const [orderId, setOrderId] = useState(localStorage.getItem("orderId") || "")
+  const localOrderId = localStorage.getItem("orderId");
+  const [orderId, setOrderId] = useState( localOrderId? localOrderId : "")
   const [userOrder, setUserOrder] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -46,7 +48,7 @@ const MyOrder = () => {
         <div className="remove">Delivery method</div>
       </div>
       {
-        userOrder.length > 0 ? <>
+        userOrder ? <>
           {
             loading ? <h3>Loading...</h3>
               :
@@ -59,7 +61,6 @@ const MyOrder = () => {
                       </div>
                       <div className="name">
                         <div>{order.name}</div>
-                        <div>${order.divrice}</div>
                         <div>Quantity: {order.quantity}</div>
                       </div>
                       <div className="name"> Items total: ${order.price * order.quantity }</div>

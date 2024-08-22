@@ -47,16 +47,6 @@ const PlaceOrder = async (req, res) => {
             cancel_url:`${frontEndUrl}/verify?success=false&orderId=${newOrder._id}`
         });
 
-        res.cookie('OrderId', order._id, {
-            httpOnly: true, 
-            secure: process.env.NODE_ENV === 'production', // Use secure cookies only in production
-            maxAge: 86400000, //24h
-            sameSite: 'None' 
-        });
-
-        // Log the headers to check if Set-Cookie is included
-        console.log("Set-Cookie Header:", res.getHeaders()['set-cookie']);
-
         res.json({success:true, session_url:session.url});
 
     } catch (error) {
@@ -83,7 +73,6 @@ const fetchUserOrder = async (req, res) => {
 
         await order.save()
 
-        console.log("ORDERData:", order);
         return res.json({ success: true, order:order.items, message: "Order found" });
 
     } catch (error) {
@@ -112,7 +101,6 @@ const fetchAllOrder = async (req, res) => {
 const remaoveDelOrder = async (req, res) => {
     const orderId = req.body.id
     try {
-        console.log("orderId:", orderId);
         
         if (!orderId) {
             return res.json({ success: true, message: "No Order found" });

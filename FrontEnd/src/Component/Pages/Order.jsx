@@ -43,7 +43,7 @@ const Order = () => {
         }
         try {
             setLoading(true)
-            let response = await axios.post(url+"api/order/place", orderData, {headers:{token}});
+            let response = await axios.post(url + "api/order/place", orderData, {headers: { token }});
             
             if(response.data.success){
                 const {session_url} = response.data;
