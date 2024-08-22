@@ -9,7 +9,7 @@ const ListItems = ({ apiUrl }) => {
 
   const fetchFood = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/api/foods/food`);
+      const response = await axios.get(`${apiUrl}api/foods/food`);
       if (response.data.success === true) {
         setAllFood(response.data.data);
     
@@ -27,7 +27,7 @@ const ListItems = ({ apiUrl }) => {
 
   const removeFood = async (food_Id) =>{
     try {
-      const response = await axios.post(`${apiUrl}/api/foods/remove`,{id:food_Id} )
+      const response = await axios.post(`${apiUrl}api/foods/remove`,{id:food_Id} )
       if(response.data.success === true){
         fetchFood();
         toast.success(response.data.message);
@@ -57,7 +57,7 @@ const ListItems = ({ apiUrl }) => {
             allFood.map((food) => {
               return <div className="content" key={food._id}>
                 <div className="image">
-                  <img src={`${apiUrl}/images/${food.image}`} alt="" />
+                  <img src={`${apiUrl}images/${food.image}`} alt="" />
                 </div>
                 <div className="name">{food.name}
                 

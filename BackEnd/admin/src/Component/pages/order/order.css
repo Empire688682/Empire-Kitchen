@@ -1,0 +1,23 @@
+.order_items{
+    background-color: aquamarine;
+    width: 100%;
+    margin-bottom: 90px;
+}
+.order_items .content{
+    display: flex;
+    gap: 10px;
+    border: 1px solid gray;
+    padding: 10px 20px;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.header_item, .header_address, .header_amount, .header_remove {
+    margin-bottom: 15px;
+    font-weight: bold;
+    border-bottom: 2px solid gray;
+}
+.content .item, .content .address, .content .amount, .content .remove{
+    flex-basis: 23%;
+    max-width: 200px;
+}

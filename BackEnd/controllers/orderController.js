@@ -70,6 +70,10 @@ const fetchUserOrder = async (req, res) => {
             return res.json({ success: true, message: "No Order found" });
         }
 
+        order.payment = true;
+
+        await order.save()
+
         console.log("ORDERData:", order);
         return res.json({ success: true, order:order.items, message: "Order found" });
 
@@ -79,5 +83,39 @@ const fetchUserOrder = async (req, res) => {
     }
 };
 
-export { PlaceOrder, fetchUserOrder }
+const fetchAllOrder = async (req, res) => {
+
+    try {
+        const order = await OrderModel.find({});
+
+        if (!order) {
+            return res.json({ success: true, message: "No Order found" });
+        }
+
+        return res.json({ success: true, order, message: "Order found" });
+
+    } catch (error) {
+        console.log("ERROR:", error);
+        return res.json({ success: false, message: "ERROR" });
+    }
+};
+const remaoveDelOrder = async (req, res) => {
+    const {orederId} = req.body
+    try {
+
+        if (!orederId) {
+            return res.json({ success: true, message: "No Order found" });
+        }
+
+        await OrderModel.findByIdAndDelete({_id:orederId});
+
+        return res.json({ success: true, order, message: "Order Deleted" });
+
+    } catch (error) {
+        console.log("ERROR:", error);
+        return res.json({ success: false, message: "ERROR" });
+    }
+};
+
+export { PlaceOrder, fetchUserOrder, fetchAllOrder, remaoveDelOrder }
 

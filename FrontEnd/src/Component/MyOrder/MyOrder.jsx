@@ -43,7 +43,7 @@ const MyOrder = () => {
         <div className="image">Image</div>
         <div className="name">Name</div>
         <div className="name">Payment Details</div>
-        <div className="remove">Remove</div>
+        <div className="remove">Delivery method</div>
       </div>
       {
         userOrder.length > 0 ? <>
@@ -58,12 +58,12 @@ const MyOrder = () => {
                         <img src={`${url}images/${order.image}`} alt="" />
                       </div>
                       <div className="name">
-                        <p>{order.name}</p>
-                        <p>${order.price}</p>
-                        <p>Quantity: {order.quantity}</p>
+                        <div>{order.name}</div>
+                        <div>${order.divrice}</div>
+                        <div>Quantity: {order.quantity}</div>
                       </div>
-                      <div className="name">Order Processing</div>
-                      <div className="remove">X</div>
+                      <div className="name"> Items total: ${order.price * order.quantity }</div>
+                      <div className="remove">Door delivery</div>
                     </div>
                   })
                 }

@@ -32,7 +32,7 @@ const AddItems = ({apiUrl}) => {
         formData.append("image", image);
 
         try {
-            const response = await axios.post(`${apiUrl}/api/foods/add`, formData);
+            const response = await axios.post(`${apiUrl}api/foods/add`, formData);
             if(response.data.message === "food added"){
                 setData({
                     name:"",
