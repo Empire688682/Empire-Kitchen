@@ -63,7 +63,7 @@ const ListItems = ({ apiUrl }) => {
                 
                 </div>
                 <div className="category">{food.category}</div>
-                <div className="price">${food.price}</div>
+                <div className="price">#{food.price}</div>
                 <div className="remove" onClick={()=> removeFood(food._id)}>X</div>
               </div>
             })

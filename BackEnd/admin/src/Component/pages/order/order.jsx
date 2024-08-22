@@ -101,7 +101,7 @@ const Order = ({ apiUrl }) => {
                 </div>
                 <div>
                   <div className="header_amount">Total Amount</div>
-                  <div className="amount">${order.amount}</div>
+                  <div className="amount">#{order.amount}</div>
                 </div>
                 <div>
                   <div className="header_remove">Remove</div>
