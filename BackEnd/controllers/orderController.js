@@ -5,19 +5,18 @@ const stripe = new Stripe(process.env.STRIPE_KEY);
 
 //Placing user order from frontEnd
 const PlaceOrder = async (req, res) => {
-    const {userId, items, amount, address} = req.body;
+    const {items, amount, address} = req.body;
     //const frontEndUrl = "https://empire-kitchen-1.onrender.com";
     const frontEndUrl = "http://localhost:5173";
     
     try {
         const newOrder = new OrderModel({
-            userId, 
             items, 
             amount, 
             address
         });
 
-        await newOrder.save();
+       const order =  await newOrder.save();
 
         const line_items = items.map((item) =>({
             price_data:{
@@ -48,11 +47,21 @@ const PlaceOrder = async (req, res) => {
             cancel_url:`${frontEndUrl}/verify?success=false&orderId=${newOrder._id}`
         });
 
+        res.cookie('OrderId', order._id, {
+            httpOnly: true, 
+            secure: process.env.NODE_ENV === 'production', // Use secure cookies only in production
+            maxAge: 86400000, //24h
+            sameSite: 'None' 
+        });
+
+        // Log the headers to check if Set-Cookie is included
+        console.log("Set-Cookie Header:", res.getHeaders()['set-cookie']);
+
         res.json({success:true, session_url:session.url});
 
     } catch (error) {
         console.log(error);
-        res.json({succes:false, message:"Error"});
+        res.json({success:false, message:"Error"});
     }
 };
 
