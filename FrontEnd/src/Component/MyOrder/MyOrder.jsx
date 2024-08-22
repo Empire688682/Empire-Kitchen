@@ -48,7 +48,7 @@ const MyOrder = () => {
       {
         userOrder.length > 0 ? <>
           {
-            loading ? <h3>Loading....</h3>
+            loading ? <h3>Loading...</h3>
               :
               <>
                 {
