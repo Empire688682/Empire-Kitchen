@@ -3,57 +3,63 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_KEY);
 
-//Placing user order from frontEnd
+// Placing user order from frontEnd
 const PlaceOrder = async (req, res) => {
-    const {items, amount, address} = req.body;
+    const { items, amount, address } = req.body;
     const frontEndUrl = "https://empire-kitchen-1.onrender.com";
-    //const frontEndUrl = "http://localhost:5173";
-    
+    // const frontEndUrl = "http://localhost:5173";
+
     try {
+        // Create a new order in your database
         const newOrder = new OrderModel({
-            items, 
-            amount, 
+            items,
+            amount,
             address
         });
 
-       await newOrder.save();
+        await newOrder.save();
 
-        const line_items = items.map((item) =>({
-            price_data:{
-                currency:"ngn",
-                product_data:{
-                    name:item.name
+        // Prepare line items for Stripe Checkout
+        const line_items = items.map((item) => ({
+            price_data: {
+                currency: "ngn",
+                product_data: {
+                    name: item.name
                 },
-                unit_amount:item.price *100*1500
-            }, 
-            quantity:item.quantity
+                unit_amount: item.price * 100  // Convert from USD to NGN and then to kobo
+            },
+            quantity: item.quantity
         }));
 
+        // Add delivery charges
         line_items.push({
-            price_data:{
-                currency:"ngn",
-                product_data:{
-                    name:"Delivery Charges"
+            price_data: {
+                currency: "ngn",
+                product_data: {
+                    name: "Delivery Charges"
                 },
-                unit_amount:20*100*1500
+                unit_amount: 2000 * 100  // Delivery fee in kobo
             },
-            quantity:1
+            quantity: 1
         });
 
+        // Create a Stripe Checkout Session
         const session = await stripe.checkout.sessions.create({
-            line_items:line_items,
-            mode:"payment",
-            success_url:`${frontEndUrl}/verify?success=true&orderId=${newOrder._id}`,
-            cancel_url:`${frontEndUrl}/verify?success=false&orderId=${newOrder._id}`
+            payment_method_types: ['card'],  // Specify the payment methods
+            line_items: line_items,
+            mode: "payment",
+            success_url: `${frontEndUrl}/verify?success=true&orderId=${newOrder._id}`,
+            cancel_url: `${frontEndUrl}/verify?success=false&orderId=${newOrder._id}`
         });
 
-        res.json({success:true, session_url:session.url});
+        res.json({ success: true, session_url: session.url });
 
     } catch (error) {
         console.log(error);
-        res.json({success:false, message:"Error"});
+        res.json({ success: false, message: error.message });
     }
 };
+
 
 
 const fetchUserOrder = async (req, res) => {
