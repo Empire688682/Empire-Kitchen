@@ -99,17 +99,19 @@ const fetchAllOrder = async (req, res) => {
         return res.json({ success: false, message: "ERROR" });
     }
 };
-const remaoveDelOrder = async (req, res) => {
-    const {orederId} = req.body
-    try {
 
-        if (!orederId) {
+const remaoveDelOrder = async (req, res) => {
+    const orderId = req.body.id
+    try {
+        console.log("orderId:", orderId);
+        
+        if (!orderId) {
             return res.json({ success: true, message: "No Order found" });
         }
 
-        await OrderModel.findByIdAndDelete({_id:orederId});
+        await OrderModel.findByIdAndDelete({_id:orderId});
 
-        return res.json({ success: true, order, message: "Order Deleted" });
+        return res.json({ success: true, message: "Order Deleted" });
 
     } catch (error) {
         console.log("ERROR:", error);

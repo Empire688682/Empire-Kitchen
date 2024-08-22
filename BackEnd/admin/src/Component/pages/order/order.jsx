@@ -32,10 +32,9 @@ const Order = ({ apiUrl }) => {
     fetchorder()
   }, []);
 
-  const removeDeliveredOrder = async ({ orderId }) => {
+  const removeDeliveredOrder = async (orderId) => {
     try {
-      await axios.post(apiUrl + "api/order/removeoder", { orderId })
-      const response = await axios.post(`${apiUrl}api/order/removeorder`, { orderId })
+      const response = await axios.post(`${apiUrl}api/order/removeorder`, { id:orderId })
       if (response.data.success === true) {
         fetchorder();
         toast.success(response.data.message);
