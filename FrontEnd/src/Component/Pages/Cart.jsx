@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { UseGlobalContext } from '../../Context';
 import './Cart.css';
 import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
-  const { food_list, cartItems, removeFromCart, addTocart, getTotalValue } = UseGlobalContext()
+  const { food_list, token, cartItems, removeFromCart, addTocart, getTotalValue } = UseGlobalContext();
+
+  useEffect(()=>{
+    if(!token){
+      window.location.replace("/")
+    }
+  },[]);
+
   return (
     <div className='Cart'>
       <div className="cart-head">

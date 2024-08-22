@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import './Verify.css'
 import { UseGlobalContext } from '../../Context';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -8,7 +8,13 @@ const Verify = () => {
     const queryParams = new URLSearchParams(location.search);
     const orderId =  queryParams.get('orderId');
     const wentThrough = queryParams.get("success");
-    const {getTotalValue} = UseGlobalContext();
+    const {getTotalValue, token} = UseGlobalContext();
+
+    useEffect(()=>{
+        if(!token){
+          window.location.replace("/")
+        }
+      },[])
 
     console.log("VERIFY:",orderId)
 

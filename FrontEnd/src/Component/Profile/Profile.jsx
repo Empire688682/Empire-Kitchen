@@ -1,5 +1,5 @@
 import './Profile.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { UseGlobalContext } from '../../Context';
 import { FaUser } from "react-icons/fa";
@@ -9,7 +9,14 @@ import { useNavigate} from 'react-router-dom';
 import MyOrder from '../MyOrder/MyOrder';
 
 const Profile = () => {
-  const { url, setToken } = UseGlobalContext()
+  const { url, setToken, token } = UseGlobalContext();
+
+  useEffect(()=>{
+    if(!token){
+      window.location.replace("/")
+    }
+  },[])
+
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("User Data")) || "");
   const [data, setData] = useState({
     userId: `${user._id}`,

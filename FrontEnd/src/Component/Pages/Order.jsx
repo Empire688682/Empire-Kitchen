@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Cart.css';
 import { UseGlobalContext } from '../../Context';
 import axios from 'axios';
 
 const Order = () => {
     const { getTotalValue, token, food_list, cartItems, url } = UseGlobalContext();
+
+    useEffect(()=>{
+        if(!token){
+          window.location.replace("/")
+        }
+      },[])
+
     const [data, setData] = useState({
         FirstName: "",
         LastName: "",
