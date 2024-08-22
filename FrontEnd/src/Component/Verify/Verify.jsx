@@ -27,7 +27,7 @@ const Verify = () => {
         <div className="order-details">
             <h2>Order Details</h2>
             <p><strong>Order ID:</strong> <span id="order-id">{orderId}</span></p>
-            <p><strong>Amount Paid:</strong> $<span id="amount-paid">{getTotalValue()+20}</span></p>
+            <p><strong>Amount Paid:</strong> #<span id="amount-paid">{getTotalValue()+2000}</span></p>
         </div>
         <NavLink to="/" className="btn">Continue Shopping</NavLink>
     </div>

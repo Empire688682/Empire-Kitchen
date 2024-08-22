@@ -50,7 +50,7 @@ const MyOrder = () => {
       {
         userOrder ? <>
           {
-            loading ? <h3>Loading...</h3>
+            loading ? <h3 style={{color:"black"}}>Loading...</h3>
               :
               <>
                 {
@@ -63,7 +63,7 @@ const MyOrder = () => {
                         <div>{order.name}</div>
                         <div>Quantity: {order.quantity}</div>
                       </div>
-                      <div className="name"> Items total: ${order.price * order.quantity }</div>
+                      <div className="name"> Items total: #{order.price * order.quantity }</div>
                       <div className="remove">Door delivery</div>
                     </div>
                   })
