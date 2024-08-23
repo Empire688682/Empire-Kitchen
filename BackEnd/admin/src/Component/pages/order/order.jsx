@@ -52,7 +52,7 @@ const Order = ({ apiUrl }) => {
       <ToastContainer style={{ width: "80%" }} />
       <h2>All order List</h2>
       {
-        allOrder.length > 0 ? <>
+        allOrder.length >0 ? <>
           {
             allOrder.map((order) => {
               return <div className="content" key={order._id}>
