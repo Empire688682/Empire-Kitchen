@@ -21,7 +21,6 @@ const Order = () => {
         ZipCode: "",
         Phone: ""
     });
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);  // For error messages
     const [showToast, setShowToast] = useState(false); // For toast notifications
 
@@ -73,6 +72,7 @@ const Order = () => {
         }
     };
 
+    const [loading, setLoading] = useState(false);
     return (
         <div className="order">
             {showToast && 
