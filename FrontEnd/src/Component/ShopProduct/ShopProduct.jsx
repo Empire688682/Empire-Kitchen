@@ -12,7 +12,7 @@ import loading_gif from '../Asset/loading_gif.gif_2.gif'
 
 
 const ShopProduct = () => {
-  const { food_list, cartItems, url, addTocart, removeFromCart, token, setLoginStatus, setShipingFeeToggle, networkError } = UseGlobalContext()
+  const { food_list, loading, cartItems, url, addTocart, removeFromCart, token, setLoginStatus, setShipingFeeToggle, networkError } = UseGlobalContext()
   const [category, setCategory] = useState("All");
 
   const handleAddCart = (id) => {
@@ -32,6 +32,12 @@ const ShopProduct = () => {
       <Menu category={category} setCategory={setCategory} />
       <h1 className='title'>Top Meal Near You</h1>
       <div className="all_Product" id='allItems'>
+        {
+          loading && (<div className='fetching_food' style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+          <img src={loading_gif} alt="" style={{ width: "100px" }} />
+          <h2 style={{ color: "white" }}> FETCHING FOOD.......</h2>
+        </div>) 
+        }
         {
           food_list.length > 0 ? <>
             {
@@ -69,10 +75,7 @@ const ShopProduct = () => {
               {
                 networkError ? <div id='nofood_available' style={{ margin: "50px 0", textAlign: "center" }}> <img src={error_Img} alt="" style={{ width: "150px" }} /><h1 style={{ color: "red" }}> !Oops! An Error Occured NO Food Available, Please Check Your Internet Connection And Try Again!</h1></div>
                   :
-                  <div className='fetching_food' style={{ margin: "30px 0", display: "flex", flexDirection: "column", textAlign: "center", backgroundColor: "white", width: "200px", height: "200px", borderRadius: "50%" }}>
-                    <img src={loading_gif} alt="" style={{ width: "200px" }} />
-                    <h2 style={{ color: "black", padding: "10px", borderRadius: "10px", fontSize: "20px", backgroundColor: "white" }}> FETCHING FOOD.......</h2>
-                  </div>
+                  <h2 style={{ margin: "50px 0", textAlign: "center", color: "red" }}> Opps No food available</h2>
               }
             </>
         }

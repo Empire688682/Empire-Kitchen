@@ -70,6 +70,8 @@ const Navbar = () => {
 
   }
 
+  const isHomePage = window.location.pathname === '/';
+
   return (
     <div className={`navbar_con ${background? "show":""}`}>
       <div className='navbar'>
@@ -90,7 +92,10 @@ const Navbar = () => {
           <div className="menu mobile_menu">
             <ul>
               <NavLink onClick={menuToTop} style={{ textDecoration: "none" }} to='/'><li onClick={() => setMenu("Home")}>Home {menu === "Home" ? <hr /> : null}</li></NavLink>
-              <a onClick={menuToTop} style={{ textDecoration: "none" }} href="#menu"> <li onClick={() => setMenu("Menu")}>Menu {menu === "Menu" ? <hr /> : null}</li></a>
+              {
+                isHomePage &&
+                <a onClick={menuToTop} href="#menu" style={{ textDecoration: "none" }}><li onClick={() => setMenu("Menu")}>Menu {menu === "Menu" ? <hr /> : null}</li></a>
+              }
               <a onClick={menuToTop} href="#contact" style={{ textDecoration: "none" }}> <li onClick={() => setMenu("Contact")}>Contact us {menu === "Contact" ? <hr /> : null}</li></a>
             </ul>
           </div>
@@ -102,7 +107,7 @@ const Navbar = () => {
             {
               token && token ? <div className='user_con'><img src={profile_Icon} alt="" />
                 <ul>
-                  <NavLink to="/profile" className='li' onClick={() => setIsMenu(false)} style={{textDecoration:"none"}}>Profile</NavLink>
+                  <NavLink to="/profile" className='li' onClick={() => {setIsMenu(false); scrollTo(0, 0)}} style={{textDecoration:"none"}}>Profile</NavLink>
                   <li className='li' onClick={() => setIsMenu(false)} ><p onClick={logoutUser}>Logout</p></li>
                 </ul>
               </div>

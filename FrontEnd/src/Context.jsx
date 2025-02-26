@@ -9,12 +9,14 @@ export const ShopProvider = ({children}) => {
   const [shipingFeeToggle, setShipingFeeToggle] = useState(JSON.parse(localStorage.getItem("shipingFeeToggle")) || false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [networkError, setNetworkError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const url = "https://empire-kitchen.onrender.com/";
   //const url = "http://localhost:6886/";
   
   const getFood = async () =>{
     try {
+      setLoading(true);
       const response = await axios.get(url+"api/foods/food");
       if(response){
         setFood_List(response.data.data)
@@ -25,6 +27,9 @@ export const ShopProvider = ({children}) => {
     } catch (error) {
       console.log(error);
       setNetworkError(true);
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -83,6 +88,7 @@ export const ShopProvider = ({children}) => {
   
   return <ShopContext.Provider value={{
   food_list,
+  loading,
   url,
   shipingFeeToggle,
   setShipingFeeToggle,
