@@ -29,6 +29,8 @@
     padding: 10px;
     position: relative;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    max-width: 60%;
+    margin: 0 auto;
 }
 .hero p{
     color: white;
