@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { UseGlobalContext } from '../../Context';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const MyOrder = () => {
   const { url } = UseGlobalContext();
@@ -50,7 +51,7 @@ const MyOrder = () => {
       {
         userOrder ? <>
           {
-            loading ? <h3 style={{color:"black"}}>Loading...</h3>
+            loading ? <LoadingSpinner/>
               :
               <>
                 {
