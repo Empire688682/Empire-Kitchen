@@ -9,6 +9,7 @@ import Remove_Green from '../Asset/remove_icon_red.png';
 import FastDeliver from '../FastDeliver/FastDeliver';
 import error_Img from '../Asset/Error_404.jpg';
 import loading_gif from '../Asset/loading_gif.gif_2.gif'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 
 const ShopProduct = () => {
@@ -33,10 +34,7 @@ const ShopProduct = () => {
       <h1 className='title'>Top Meal Near You</h1>
       <div className="all_Product" id='allItems'>
         {
-          loading && (<div className='fetching_food' style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-          <img src={loading_gif} alt="" style={{ width: "100px" }} />
-          <h2 style={{ color: "white" }}> FETCHING FOOD.......</h2>
-        </div>) 
+          loading && <LoadingSpinner/>
         }
         {
           food_list.length > 0 ? <>
