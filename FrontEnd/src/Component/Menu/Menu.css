@@ -25,6 +25,8 @@
 .menu-box img{
     cursor: pointer;
     transition:  .6s;
+    width: 70px;
+    height: 70px;
 }
 .menu-box img:active{
     transform: rotate(50deg);

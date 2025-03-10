@@ -18,8 +18,9 @@ export const ShopProvider = ({children}) => {
     try {
       setLoading(true);
       const response = await axios.get(url+"api/foods/food");
-      if(response){
-        setFood_List(response.data.data)
+      if(response.data.success){
+        setFood_List(response.data.data);
+        console.log("Food:", response.data.data);
       }
       else{
         console.log("ERROR")

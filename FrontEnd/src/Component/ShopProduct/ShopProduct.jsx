@@ -8,7 +8,6 @@ import Plus_Green from '../Asset/add_icon_green.png';
 import Remove_Green from '../Asset/remove_icon_red.png';
 import FastDeliver from '../FastDeliver/FastDeliver';
 import error_Img from '../Asset/Error_404.jpg';
-import loading_gif from '../Asset/loading_gif.gif_2.gif'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 
