@@ -94,7 +94,7 @@ const AddItems = ({apiUrl}) => {
                     </div>
                     <div className="add-price-con flex-col">
                         <p>Product price</p>
-                        <input onChange={onchangeHandler} value={data.price}  type="number" name="price" required placeholder='$20' />
+                        <input onChange={onchangeHandler} value={data.price}  type="number" name="price" required placeholder='#2000' />
                     </div>
                 </div>
                 <button className="add-button" type='submit'>ADD</button>
