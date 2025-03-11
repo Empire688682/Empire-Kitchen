@@ -8,10 +8,12 @@ const addFood = async (req, res) => {
         const imagePath = req.file.path
         const imageUrl = await uploadImage(imagePath);
 
-        fs.unlinkSync(imagePath , (err) => {
-            if (err) console.error("Error deleting file:", err);
-        })
-
+        try {
+            fs.unlinkSync(req.file.path);
+        } catch (err) {
+            console.warn("File already deleted or not found:", err.message);
+        }
+        
         // Create a new food item
         const food = new foodModel({
             name: req.body.name,
