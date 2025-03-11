@@ -15,8 +15,10 @@ const AddItems = ({apiUrl}) => {
         category:"Salad"
     });
     const [emptyField, setEmptyField] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const submitHandler = async (e) =>{
+        setLoading(true)
         if(!image){
             setEmptyField(true)
         }else{
@@ -33,7 +35,7 @@ const AddItems = ({apiUrl}) => {
 
         try {
             const response = await axios.post(`${apiUrl}api/foods/add`, formData);
-            if(response.data.message === "food added"){
+            if(response.data.success){
                 setData({
                     name:"",
                     description:"Food provides essential nutrients for overall health and well-being",
@@ -47,6 +49,9 @@ const AddItems = ({apiUrl}) => {
             }
         } catch (error) {
            console.log(error);
+        }
+        finally{
+            setLoading(false)
         }
     }
 
@@ -97,7 +102,7 @@ const AddItems = ({apiUrl}) => {
                         <input onChange={onchangeHandler} value={data.price}  type="number" name="price" required placeholder='#2000' />
                     </div>
                 </div>
-                <button className="add-button" type='submit'>ADD</button>
+                <button className="add-button" disabled={loading} type='submit'>{loading? "Adding...": "ADD"}</button>
             </form>
         </div>
     );

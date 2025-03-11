@@ -10,8 +10,8 @@ import PageNotFound from './Component/pages/pageNotFound/pageNotFound';
 
 
 const App = () => {
-   //const apiUrl = "http://localhost:6886/";
-   const apiUrl = "https://empire-kitchen.onrender.com/";
+  //const apiUrl = "http://localhost:6886/";
+  const apiUrl = "https://empire-kitchen.onrender.com/";
   return (
     <div>
       <Navbar />

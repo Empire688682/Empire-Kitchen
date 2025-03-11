@@ -1,11 +1,16 @@
 import { foodModel } from "../models/foodModel.js";
-import fs from 'fs'
 import { uploadImage } from "./storageController.js";
+import fs from "fs"
 
 const addFood = async (req, res) => {
     try {
         // Upload image to Cloudinary
-        const imageUrl = await uploadImage(req.file.path);
+        const imagePath = req.file.path
+        const imageUrl = await uploadImage(imagePath);
+
+        fs.unlinkSync(imagePath , (err) => {
+            if (err) console.error("Error deleting file:", err);
+        })
 
         // Create a new food item
         const food = new foodModel({
