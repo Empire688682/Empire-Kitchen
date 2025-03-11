@@ -33,48 +33,53 @@ const ShopProduct = () => {
       <h1 className='title'>Top Meal Near You</h1>
       <div className="all_Product" id='allItems'>
         {
-          loading && <LoadingSpinner/>
-        }
-        {
-          food_list.length > 0 ? <>
-            {
-              food_list.map((items) => {
-                if (category === "All" || category === items.category) {
-                  return (
-                    <div className='item' key={items._id}>
-                      <div className="item_img_con">
-                        <img className='item-img' src={`${url}images/${items.image}`} />
-                      </div>
-                      {
-                        !cartItems[items._id] ? <div className="item-count" >
-                          <img className="count-img" src={Plus_Icon} onClick={() => handleAddCart(items._id)} />
-                        </div> :
-                          <div className="item-count">
-                            <img src={Plus_Green} onClick={() => addTocart(items._id)} />
-                            <p style={{ color: "black" }}>{cartItems[items._id]}</p>
-                            <img src={Remove_Green} onClick={() => removeFromCart(items._id)} />
-                          </div>
-                      }
-                      <div className="item-name">
-                        <h3>{items.name}</h3>
-                        <img src={star_Icon} />
-                      </div>
-                      <p className="description">{items.description}</p>
-                      <p className='price'>#{items.price}</p>
-                    </div>
-                  )
-                }
-              })
-            }
-          </>
-            :
-            <>
+          loading ? <div>
+            <LoadingSpinner />
+            Searching For Foods
+          </div> :
+            <section>
               {
-                networkError ? <div id='nofood_available' style={{ margin: "50px 0", textAlign: "center" }}> <img src={error_Img} alt="" style={{ width: "150px" }} /><h1 style={{ color: "red" }}> !Oops! An Error Occured NO Food Available, Please Check Your Internet Connection And Try Again!</h1></div>
+                food_list && food_list.length > 0 ? <>
+                  {
+                    food_list.map((items) => {
+                      if (category === "All" || category === items.category) {
+                        return (
+                          <div className='item' key={items._id}>
+                            <div className="item_img_con">
+                              <img className='item-img' src={`${url}images/${items.image}`} />
+                            </div>
+                            {
+                              !cartItems[items._id] ? <div className="item-count" >
+                                <img className="count-img" src={Plus_Icon} onClick={() => handleAddCart(items._id)} />
+                              </div> :
+                                <div className="item-count">
+                                  <img src={Plus_Green} onClick={() => addTocart(items._id)} />
+                                  <p style={{ color: "black" }}>{cartItems[items._id]}</p>
+                                  <img src={Remove_Green} onClick={() => removeFromCart(items._id)} />
+                                </div>
+                            }
+                            <div className="item-name">
+                              <h3>{items.name}</h3>
+                              <img src={star_Icon} />
+                            </div>
+                            <p className="description">{items.description}</p>
+                            <p className='price'>#{items.price}</p>
+                          </div>
+                        )
+                      }
+                    })
+                  }
+                </>
                   :
-                  <h2 style={{ margin: "50px 0", textAlign: "center", color: "red" }}> Opps No food available</h2>
+                  <>
+                    {
+                      networkError ? <div id='nofood_available' style={{ margin: "50px 0", textAlign: "center" }}> <img src={error_Img} alt="" style={{ width: "150px" }} /><h1 style={{ color: "red" }}> !Oops! An Error Occured NO Food Available, Please Check Your Internet Connection And Try Again!</h1></div>
+                        :
+                        <h2 style={{ margin: "50px 0", textAlign: "center", color: "red" }}> Opps No food available</h2>
+                    }
+                  </>
               }
-            </>
+            </section>
         }
       </div>
       <FastDeliver />
