@@ -46,7 +46,7 @@ const ShopProduct = () => {
                         return (
                           <div className='item' key={items._id}>
                             <div className="item_img_con">
-                              <img className='item-img' src={`${url}images/${items.image}`} />
+                              <img className='item-img' src={items.image} />
                             </div>
                             {
                               !cartItems[items._id] ? <div className="item-count" >

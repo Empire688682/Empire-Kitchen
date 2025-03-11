@@ -57,7 +57,7 @@ const ListItems = ({ apiUrl }) => {
             allFood.map((food) => {
               return <div className="content" key={food._id}>
                 <div className="image">
-                  <img src={`${apiUrl}images/${food.image}`} alt="" />
+                  <img src={food.image} alt="" />
                 </div>
                 <div className="name">{food.name}
                 
