@@ -1,74 +1,78 @@
 import { foodModel } from "../models/foodModel.js";
 import fs from 'fs'
+import { uploadImage } from "./storageController.js";
 
 const addFood = async (req, res) => {
-    let file_Name = `${req.file.filename}`
     try {
+        // Upload image to Cloudinary
+        const imageUrl = await uploadImage(req.file.path);
+
+        // Create a new food item
         const food = new foodModel({
-            name:req.body.name,
-            description:req.body.description,
-            price:req.body.price,
-            category:req.body.category,
-            image:file_Name,
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            category: req.body.category,
+            image: imageUrl,
         });
 
         await food.save();
         res.json({
-            success:true,
-            data:food,
-            message:"food added"});
+            success: true,
+            data: food,
+            message: "food added"
+        });
 
     } catch (error) {
         console.log(error);
         res.json({
-            success:false,
-            message:"Unable to add food",
-            error:error.message
-    });
+            success: false,
+            message: "Unable to add food",
+            error: error.message
+        });
     }
 };
 
-const removeFood = async (req,res) =>{
+const removeFood = async (req, res) => {
     try {
         const food = await foodModel.findById(req.body.id);
-        if(!food){
+        if (!food) {
             return res.json({
-                success:false,
-                message:"Food not found",
-        });
-        } ;
-        fs.unlink(`upload/${food.image}`, ()=>{});
+                success: false,
+                message: "Food not found",
+            });
+        };
         await foodModel.findByIdAndDelete(req.body.id);
         res.json({
-            success:true,
-            message:"food remove"
-    });
+            success: true,
+            message: "food remove"
+        });
     } catch (error) {
         console.log(error);
         res.json({
-            success:false,
-            message:"Unable to remove food",
-            error:error.message
-    });
+            success: false,
+            message: "Unable to remove food",
+            error: error.message
+        });
     }
 };
 
-const fetchFoods = async (req,res) =>{
+const fetchFoods = async (req, res) => {
     try {
         const foods = await foodModel.find({});
         res.json({
-            success:true,
-            data:foods,
-            message:"food fetched successfully"
+            success: true,
+            data: foods,
+            message: "food fetched successfully"
         });
     } catch (error) {
         console.log(error);
         res.json({
-            success:false,
-            message:"Unable fetch food",
-            error:error.message
-    });
+            success: false,
+            message: "Unable fetch food",
+            error: error.message
+        });
     }
 }
 
-export {addFood,removeFood,fetchFoods};
+export { addFood, removeFood, fetchFoods };
