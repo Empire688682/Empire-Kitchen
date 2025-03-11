@@ -28,7 +28,7 @@ const ShopProduct = () => {
   }
 
   return (
-    <div className='shop-product'>
+    <section className='shop-product'>
       <Menu category={category} setCategory={setCategory} />
       <h1 className='title'>Top Meal Near You</h1>
       <div className="all_Product" id='allItems'>
@@ -37,7 +37,7 @@ const ShopProduct = () => {
             <LoadingSpinner />
             Searching For Foods
           </div> :
-            <section>
+            <>
               {
                 food_list && food_list.length > 0 ? <>
                   {
@@ -79,11 +79,11 @@ const ShopProduct = () => {
                     }
                   </>
               }
-            </section>
+            </>
         }
       </div>
       <FastDeliver />
-    </div>
+    </section>
   )
 }
 
