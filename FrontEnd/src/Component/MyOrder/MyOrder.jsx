@@ -58,7 +58,7 @@ const MyOrder = () => {
                   userOrder.map((order) => {
                     return <div className="content" key={order._id}>
                       <div className="image">
-                        <img src={`${url}images/${order.image}`} alt="" />
+                        <img src={order.image} alt="" />
                       </div>
                       <div className="name">
                         <div>{order.name}</div>

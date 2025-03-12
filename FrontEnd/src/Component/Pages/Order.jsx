@@ -47,7 +47,7 @@ const Order = () => {
         let orderData = {
             address: data,
             items: orderItem,
-            amount: getTotalValue() + 20  // Add delivery fee
+            amount: getTotalValue() + 2000 // Add delivery fee
         };
 
         try {
@@ -99,7 +99,7 @@ const Order = () => {
                     <h3>Cart Totals</h3>
                     <div>Subtotal <h4>#{getTotalValue()}</h4></div>
                     <div>Delivery fees <h4>#2000</h4></div>
-                    <div>Total <h4>#{getTotalValue() + 20}</h4></div>
+                    <div>Total <h4>#{getTotalValue() + 2000}</h4></div>
                     <label htmlFor='submitButton' className='button-label'>
                         {loading ? "Processing..." : "Proceed to checkout"}
                     </label>
